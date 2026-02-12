@@ -27,34 +27,10 @@ export const teamMembers: TeamMember[] = [
     }
   },
   {
-    slug: 'xin-minrui',
-    name: '辛敏睿 / Minrui Xin',
-    role: '排版 Layout',
-    focus: '图文编排与阅读体验',
-    bioZh: '负责图文排版、段落节奏与视觉一致性，提升文章在网页端的可读性。',
-    bioEn: 'Handles layout, visual rhythm, and article readability across devices.',
-    avatar: '/images/team/member-placeholder.svg',
-    links: {
-      email: 'xinminrui@example.com'
-    }
-  },
-  {
-    slug: 'meng-yumeng',
-    name: '孟禹萌 / Yumeng Meng',
-    role: '审核 Review',
-    focus: '事实核对与术语统一',
-    bioZh: '负责术语规范、事实核对与细节检查，保证内容准确性与一致性。',
-    bioEn: 'Reviews terminology consistency, factual accuracy, and detail quality.',
-    avatar: '/images/team/member-placeholder.svg',
-    links: {
-      email: 'mengyumeng@example.com'
-    }
-  },
-  {
     slug: 'wei-yuhan',
     name: '尉钰涵 / Yuhan Wei',
     role: 'co-leader',
-    focus: '',
+    focus: 'designer',
     bioZh: '我是尉钰涵，是这个网站的领导者之一，我在高一加入了化学社并在高一下半学期结束之后与化学社其他三位成员开始经营化学社公众号。在公众号里，我们会发布化学社每周实验的实验原理解释和过程性图片，也会在周末或闲暇时间发布一些有关生活中化学知识的科普文章和与废物利用有关的研究性文章。我希望能够通过“二附chem club”公众号让更多的人对化学这门学科感兴趣，并且能在生活中运用化学知识解决问题。',
     bioEn: 'Polishes language and aligns content with high-school learning contexts.',
     avatar: '/images/team/wei-yuhan.jpg',
@@ -63,27 +39,27 @@ export const teamMembers: TeamMember[] = [
     }
   },
   {
-    slug: 'zhang-ruofan',
-    name: '张若凡 / Ruofan Zhang',
-    role: '审核 Review',
-    focus: '科学严谨性与引用检查',
-    bioZh: '负责科学表述严谨性把关与引用检查，降低知识性错误风险。',
-    bioEn: 'Checks scientific rigor and citation reliability before publication.',
-    avatar: '/images/team/member-placeholder.svg',
+    slug: 'zhang-bowen',
+    name: '张博文 / Bowen Zhang',
+    role: 'co-leader',
+    focus: '',
+    bioZh: '我是张博文，化学社社长之一。我平时和另一位社长负责轮流准备实验，进行预实验，以及讲解和指导社员进行实验。我认真细心，带领同学们制做了水中花园、海洋之心、碘钟等有着精彩实验现象的无机实验。我计划在下学期继续提升自己的学科知识储备，同时在化学社尝试一些基础的有机实验。',
+    bioEn: 'Provides experiment photography and organizes visual assets for publications.',
+    avatar: '/images/team/zhang-bowen.jpg',
     links: {
-      email: 'zhangruofan@example.com'
+      email: 'zhangbowen@example.com'
     }
   },
   {
-    slug: 'zhang-bowen',
-    name: '张博文 / Bowen Zhang',
-    role: '图片支持 Visual Support',
-    focus: '实验摄影与素材整理',
-    bioZh: '负责实验过程与成品的拍摄记录，并整理文章配图素材。',
-    bioEn: 'Provides experiment photography and organizes visual assets for publications.',
-    avatar: '/images/team/member-placeholder.svg',
+    slug: 'wang-yifei',
+    name: '王艺霏 / Yifei Wang',
+    role: 'co-leader',
+    focus: '',
+    bioZh: '我是王艺霏，化学社社长之一。平时会和另一位社长一起轮流进行预实验，实验准备，进行讲解并和社员们一起探索反应机理。我带领同学们制做了焰色实验，大象牙膏，银镜反应等等有各种不同现象的化学实验。下学期我计划继续提升自己的学科知识储备，和社员们一起探索和讨论更多更复杂也更深层的分子之间的连接，在简单基础的化学反应上做更多创新。',
+    bioEn: 'Leads experiment prep, demos, and mechanism discussions with club members.',
+    avatar: '/images/team/wang-yifei.jpg',
     links: {
-      email: 'zhangbowen@example.com'
+      email: 'wangyifei@example.com'
     }
   }
 ];
