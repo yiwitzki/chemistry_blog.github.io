@@ -35,7 +35,7 @@ export default function TeamPage({ params }: { params: { locale: string } }) {
               </h2>
               <div className="mt-2 flex flex-wrap gap-2">
                 <Badge>{member.role}</Badge>
-                <Badge>{member.focus}</Badge>
+                {member.focus ? <Badge>{member.focus}</Badge> : null}
               </div>
             </div>
           </Card>

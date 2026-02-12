@@ -15,6 +15,9 @@ export default function TeamMemberPage({ params }: { params: { locale: string; s
   const locale = getLocaleFromParams(params.locale);
   const member = teamMembers.find((item) => item.slug === params.slug);
   if (!member) notFound();
+  const [zhNameRaw, enNameRaw] = member.name.split('/').map((v) => v.trim());
+  const zhName = zhNameRaw ?? member.name;
+  const enName = enNameRaw ?? '';
 
   const publications = getPublicationIndex(locale).filter((item) => item.contributors?.includes(member.slug));
 
@@ -29,10 +32,10 @@ export default function TeamMemberPage({ params }: { params: { locale: string; s
           className="aspect-square rounded-2xl border border-border object-cover"
         />
         <div className="space-y-3">
-          <h1 className="text-3xl font-bold">{member.name}</h1>
+          <h1 className="text-3xl font-bold">{enName ? `${zhName} / ${enName}` : member.name}</h1>
           <div className="flex flex-wrap gap-2">
             <Badge>{member.role}</Badge>
-            <Badge>{member.focus}</Badge>
+            {member.focus ? <Badge>{member.focus}</Badge> : null}
           </div>
           <p className="max-w-2xl text-foreground/80">{locale === 'zh' ? member.bioZh : member.bioEn}</p>
           <div className="flex flex-wrap gap-3 text-sm">
