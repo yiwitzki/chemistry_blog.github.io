@@ -1,0 +1,14 @@
+<svg width="680" height="680" viewBox="0 0 680 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="680" height="680" rx="40" fill="#0B0F1A"/>
+  <circle cx="340" cy="340" r="250" stroke="#D9E2F0" stroke-width="8"/>
+  <circle cx="340" cy="340" r="170" stroke="#D9E2F0" stroke-width="6"/>
+  <circle cx="290" cy="390" r="34" fill="#F5A3B5"/>
+  <rect x="330" y="330" width="24" height="94" rx="10" fill="#E5EAF1"/>
+  <rect x="260" y="360" width="60" height="84" rx="10" fill="#E5EAF1"/>
+  <rect x="360" y="350" width="76" height="94" rx="10" fill="#E5EAF1"/>
+  <path d="M260 420H320V444H260V420Z" fill="#ECA2B4"/>
+  <path d="M360 410H436V444H360V410Z" fill="#E7B14A"/>
+  <path d="M56 340C56 184.257 184.257 56 340 56C495.743 56 624 184.257 624 340C624 495.743 495.743 624 340 624C184.257 624 56 495.743 56 340Z" stroke="#D9E2F0" stroke-width="2" stroke-dasharray="8 14"/>
+  <text x="340" y="120" fill="#F5F8FC" font-family="Arial, sans-serif" font-size="58" text-anchor="middle">化学社</text>
+  <text x="340" y="580" fill="#F5F8FC" font-family="Arial, sans-serif" font-size="52" text-anchor="middle">CHEM CLUB</text>
+</svg>

@@ -1,0 +1,15 @@
+# one URL per line
+#https://mp.weixin.qq.com/s/NZ4ttanvAG7ehnlqX7fFOA
+
+# advanced format:
+# URL|title=学期总结|date=2026-02-12|category=chem-explained|tags=电解质,科普|author=化学社团
+
+
+https://mp.weixin.qq.com/s/HeaSAPOmGbejZ9Ey9FX1rw|date=2025-10-05|category=chem-in-life|categoryLabelZh=生活与化学|tags=铁,生活
+
+
+
+https://mp.weixin.qq.com/s/nBOsAhAAhilGYANzfwg-pg|date=2025-09-14|category=chem-in-life|categoryLabelZh=生活与化学|tags=群青,生活
+
+
+

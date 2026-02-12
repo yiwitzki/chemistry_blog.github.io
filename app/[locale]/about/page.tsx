@@ -9,7 +9,7 @@ export default function AboutPage({ params }: { params: { locale: string } }) {
     locale === 'zh'
       ? {
           intro:
-            '本项目由高中化学团队发起，目标是将实验课程中的真实问题转化为高质量、可复现、可传播的成果文章。',
+            '本项目由SHSBNU. Chem发起，目标是将实验课程中的真实问题转化为高质量、可复现、可传播的成果文章。',
           profile:
             '申请者长期参与化学社团活动与课堂实验改进，重视安全规范、数据可信度与科学表达。我们通过双语写作让更多同龄学习者受益。',
           safety:
@@ -19,7 +19,7 @@ export default function AboutPage({ params }: { params: { locale: string } }) {
         }
       : {
           intro:
-            'This project is led by a high school chemistry team to turn authentic lab questions into reproducible, high-quality articles.',
+            'This project is led by SHSBNU. Chem team to turn authentic lab questions into reproducible, high-quality articles.',
           profile:
             'The applicant has been active in chemistry clubs and classroom lab improvements, with a strong focus on safety, data quality, and scientific writing.',
           safety:

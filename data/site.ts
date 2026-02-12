@@ -12,10 +12,10 @@ export const defaultLocale: Locale = 'zh';
 
 export const siteConfig = {
   name: {
-    en: 'High School Chemistry Team Showcase',
-    zh: '高中化学团队成果展示'
+    en: 'SHSBNU. Chem',
+    zh: 'SHSBNU. Chem'
   },
-  shortName: 'Chem Showcase',
+  shortName: 'SHSBNU. Chem',
   description: {
     en: 'A bilingual showcase for high school chemistry experiments, explainers, life applications, and green chemistry.',
     zh: '面向高中化学团队的中英双语成果展示站，聚焦实验、科普、生活应用与绿色化学。'

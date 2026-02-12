@@ -23,7 +23,12 @@ export function Callout({ type = 'info', children }: { type?: 'info' | 'warning'
 export function Figure({ src, alt, caption }: FigureProps) {
   return (
     <figure className="my-8">
-      <Image src={assetPath(src)} alt={alt} width={1200} height={800} className="rounded-xl border border-border" />
+      <img
+        src={assetPath(src)}
+        alt={alt}
+        loading="lazy"
+        className="h-auto max-w-full rounded-xl border border-border"
+      />
       {caption ? <figcaption className="mt-2 text-center text-sm text-foreground/70">{caption}</figcaption> : null}
     </figure>
   );

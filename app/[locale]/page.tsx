@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Beaker, BookOpen, Home, Leaf } from 'lucide-react';
 import { Badge, Card, Container } from '@/components/ui';
 import { categories } from '@/data/categories';
@@ -26,16 +27,30 @@ export default function HomePage({ params }: { params: { locale: string } }) {
 
   return (
     <Container className="space-y-12 py-12">
-      <section className="space-y-6 rounded-3xl border border-border bg-card p-8 shadow-soft">
-        <Badge>High School Chemistry</Badge>
-        <h1 className="max-w-3xl text-3xl font-bold leading-tight md:text-5xl">{t.mission}</h1>
-        <div className="flex flex-wrap gap-3">
-          <Link href={`/${locale}/publications`} className="rounded-xl border border-primary bg-primary px-4 py-2 text-sm text-white no-underline">
-            {t.ctaPublications}
-          </Link>
-          <Link href={`/${locale}/team`} className="rounded-xl border border-border px-4 py-2 text-sm no-underline">
-            {t.ctaTeam}
-          </Link>
+      <section className="rounded-3xl border border-border bg-card p-8 shadow-soft">
+        <div className="grid items-center gap-8 md:grid-cols-[1.3fr_0.7fr]">
+          <div className="space-y-6">
+            <Badge>SHSBNU. Chem</Badge>
+            <h1 className="max-w-3xl text-3xl font-bold leading-tight md:text-5xl">{t.mission}</h1>
+            <div className="flex flex-wrap gap-3">
+              <Link href={`/${locale}/publications`} className="rounded-xl border border-primary bg-primary px-4 py-2 text-sm text-white no-underline">
+                {t.ctaPublications}
+              </Link>
+              <Link href={`/${locale}/team`} className="rounded-xl border border-border px-4 py-2 text-sm no-underline">
+                {t.ctaTeam}
+              </Link>
+            </div>
+          </div>
+          <div className="mx-auto w-full max-w-[240px] md:max-w-[260px]">
+            <Image
+              src="/images/home/club.jpg"
+              alt={locale === 'zh' ? '化学社团标志' : 'Chem Club logo'}
+              width={680}
+              height={680}
+              className="h-auto w-full rounded-2xl border border-border bg-black/5 object-cover shadow-soft"
+              priority
+            />
+          </div>
         </div>
       </section>
 

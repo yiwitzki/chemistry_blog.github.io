@@ -41,7 +41,9 @@ export function PublicationCard({ publication }: { publication: PublicationMeta 
         <Badge>{publication.locale === 'zh' ? category.zh : category.en}</Badge>
         {publication.difficulty ? <Badge>{publication.difficulty}</Badge> : null}
         {publication.tags.slice(0, 3).map((tag) => (
-          <Badge key={tag}>#{tag}</Badge>
+          <Link key={tag} href={`/${publication.locale}/tags/${tag}`} className="no-underline">
+            <Badge>#{tag}</Badge>
+          </Link>
         ))}
       </div>
     </Card>

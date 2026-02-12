@@ -109,3 +109,20 @@ Current behavior:
 - Submission opens a `mailto:` draft to `chem.team@example.com`.
 
 If you need backend email sending (Resend/SendGrid/rate-limit API), deploy on Vercel or another platform with server functions.
+
+## Import WeChat Articles to MDX
+
+1. Prepare link list file, e.g. `scripts/wechat-links.txt` (see `scripts/wechat-links.example.txt`).
+2. Run:
+
+```bash
+npm install
+npm run import:wechat -- --input scripts/wechat-links.txt --locale zh --category chem-explained --author "公众号转载"
+```
+
+The script will:
+- fetch article HTML
+- extract title/date/content
+- download images to `public/images/uploads/wechat/<slug>/`
+- generate MDX files in `content/<locale>/publications/`
+- output report to `scripts/wechat-import-report.json`

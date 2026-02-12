@@ -71,11 +71,20 @@ export default async function PublicationDetailPage({ params }: { params: { loca
 
           <section className="rounded-xl border border-border p-4">
             <h2 className="text-lg font-semibold">{t.contributors}</h2>
-            <ul className="mt-2 flex flex-wrap gap-2">
+            <ul className="mt-3 grid gap-3 sm:grid-cols-2">
               {contributors.map((member) => (
                 <li key={member.slug}>
-                  <Link href={`/${locale}/team/${member.slug}`} className="inline-flex rounded-full border border-border px-3 py-1 text-sm no-underline">
-                    {member.name}
+                  <Link
+                    href={`/${locale}/team/${member.slug}`}
+                    className="block rounded-xl border border-border px-4 py-3 no-underline transition hover:bg-secondary/50"
+                  >
+                    <p className="text-sm font-semibold">{member.name}</p>
+                    <p className="mt-1 text-xs text-foreground/70">
+                      {locale === 'zh' ? '角色' : 'Role'}: {member.role}
+                    </p>
+                    <p className="text-xs text-foreground/70">
+                      {locale === 'zh' ? '职责' : 'Focus'}: {member.focus}
+                    </p>
                   </Link>
                 </li>
               ))}
