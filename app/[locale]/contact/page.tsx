@@ -8,7 +8,7 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
   return (
     <Container className="space-y-6 py-12">
       <section className="space-y-2">
-        <h1 className="text-3xl font-bold">Contact</h1>
+        <h1 className="text-3xl font-bold">联系</h1>
         <p className="text-foreground/75">{dictionary[locale].contactIntro}</p>
       </section>
       <ContactForm locale={locale} />

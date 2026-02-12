@@ -5,7 +5,6 @@ import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { siteConfig, type Locale } from '@/data/site';
 import { Container } from '@/components/ui';
-import { LanguageSwitcher } from '@/components/language-switcher';
 import { cn } from '@/lib/utils';
 
 export function Navbar({ locale }: { locale: Locale }) {
@@ -25,7 +24,6 @@ export function Navbar({ locale }: { locale: Locale }) {
               {item.label}
             </Link>
           ))}
-          <LanguageSwitcher locale={locale} />
         </nav>
 
         <button
@@ -51,7 +49,6 @@ export function Navbar({ locale }: { locale: Locale }) {
               {item.label}
             </Link>
           ))}
-          <LanguageSwitcher locale={locale} />
         </Container>
       </div>
     </header>

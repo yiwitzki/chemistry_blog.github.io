@@ -4,9 +4,8 @@ import { getAllTags, getPublicationIndex } from '@/lib/content';
 import { getLocaleFromParams } from '@/lib/i18n';
 
 export function generateStaticParams() {
-  const en = getAllTags('en').map((tag) => ({ locale: 'en', tag }));
   const zh = getAllTags('zh').map((tag) => ({ locale: 'zh', tag }));
-  return [...en, ...zh];
+  return zh;
 }
 
 export default function TagPage({ params }: { params: { locale: string; tag: string } }) {

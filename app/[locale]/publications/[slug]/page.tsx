@@ -9,9 +9,8 @@ import { dictionary, getLocaleFromParams } from '@/lib/i18n';
 import { formatDate } from '@/lib/utils';
 
 export function generateStaticParams() {
-  const en = getPublicationIndex('en').map((item) => ({ locale: 'en', slug: item.slug }));
   const zh = getPublicationIndex('zh').map((item) => ({ locale: 'zh', slug: item.slug }));
-  return [...en, ...zh];
+  return zh;
 }
 
 export default async function PublicationDetailPage({ params }: { params: { locale: string; slug: string } }) {

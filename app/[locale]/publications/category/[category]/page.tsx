@@ -9,7 +9,7 @@ import { getPublicationFilters, getPublicationIndex } from '@/lib/content';
 import { dictionary, getLocaleFromParams } from '@/lib/i18n';
 
 export function generateStaticParams() {
-  return ['en', 'zh'].flatMap((locale) => categories.map((category) => ({ locale, category: category.slug })));
+  return categories.map((category) => ({ locale: 'zh', category: category.slug }));
 }
 
 export default function PublicationsCategoryPage({ params }: { params: { locale: string; category: string } }) {

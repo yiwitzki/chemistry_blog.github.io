@@ -8,7 +8,7 @@ import { getLocaleFromParams } from '@/lib/i18n';
 import { assetPath } from '@/lib/asset';
 
 export function generateStaticParams() {
-  return teamMembers.flatMap((member) => [{ locale: 'en', slug: member.slug }, { locale: 'zh', slug: member.slug }]);
+  return teamMembers.map((member) => ({ locale: 'zh', slug: member.slug }));
 }
 
 export default function TeamMemberPage({ params }: { params: { locale: string; slug: string } }) {
