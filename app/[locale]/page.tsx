@@ -28,12 +28,15 @@ export default function HomePage({ params }: { params: { locale: string } }) {
 
   return (
     <Container className="space-y-12 py-12">
-      <section className="rounded-3xl border border-border bg-card p-8 shadow-soft">
-        <div className="grid items-center gap-8 md:grid-cols-[1.3fr_0.7fr]">
-          <div className="space-y-6">
+      <section className="rounded-3xl border border-neutral-200/80 bg-gradient-to-b from-white to-neutral-50 p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
+        <div className="grid items-start gap-8 md:grid-cols-[1.2fr_0.8fr]">
+          <div className="flex h-full flex-col items-start">
             <Badge>SHSBNU. Chem</Badge>
-            <h1 className="max-w-3xl text-3xl font-bold leading-tight md:text-5xl">{t.mission}</h1>
-            <div className="flex flex-wrap gap-3">
+            <h1 className="mt-8 max-w-3xl text-2xl font-bold leading-relaxed tracking-tight text-foreground md:mt-10 md:text-4xl">
+              {t.mission}
+            </h1>
+            <p className="mt-4 text-sm font-medium text-foreground/65">实验规范 · 科学表达 · 校园传播</p>
+            <div className="mt-auto flex flex-wrap gap-3 pt-6">
               <Link href={`/${locale}/publications`} className="rounded-xl border border-primary bg-primary px-4 py-2 text-sm text-white no-underline">
                 {t.ctaPublications}
               </Link>
@@ -42,7 +45,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
               </Link>
             </div>
           </div>
-          <div className="mx-auto w-full max-w-[240px] md:max-w-[260px]">
+          <div className="mx-auto w-full max-w-[260px] md:max-w-[300px]">
             <Image
               src={assetPath('/images/home/club.jpg')}
               alt={locale === 'zh' ? '化学社团标志' : 'Chem Club logo'}
@@ -78,17 +81,22 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {categories.map((category) => {
             const Icon = iconMap[category.icon as keyof typeof iconMap] ?? Beaker;
+            const categoryCount = publications.filter((item) => item.category === category.slug).length;
             return (
               <Link
                 key={category.slug}
                 href={`/${locale}/publications/category/${category.slug}`}
-                className="rounded-2xl border border-border bg-card p-5 no-underline shadow-soft transition hover:border-accent"
+                className="group min-h-[128px] rounded-2xl border border-border/90 bg-gradient-to-b from-white to-neutral-50 p-5 no-underline shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-neutral-300 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35"
               >
-                <Icon className="mb-3" size={20} />
-                <h3 className="font-semibold">{locale === 'zh' ? category.zh : category.en}</h3>
-                <p className="mt-1 text-sm text-foreground/75">
-                  {locale === 'zh' ? category.descriptionZh : category.descriptionEn}
-                </p>
+                <div className="flex items-start justify-between gap-3">
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-white text-foreground/90">
+                    <Icon size={18} />
+                  </span>
+                  <span className="rounded-full border border-border bg-white px-2.5 py-1 text-xs font-medium text-foreground/75">
+                    {locale === 'zh' ? `${categoryCount} 篇` : `${categoryCount} posts`}
+                  </span>
+                </div>
+                <h3 className="mt-4 text-[15px] font-semibold text-foreground">{locale === 'zh' ? category.zh : category.en}</h3>
               </Link>
             );
           })}

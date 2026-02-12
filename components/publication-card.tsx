@@ -34,7 +34,6 @@ export function PublicationCard({ publication }: { publication: PublicationMeta 
             {publication.title}
           </Link>
         </h3>
-        <p className="text-sm text-foreground/85">{publication.summary}</p>
       </div>
 
       <div className="mt-auto flex flex-wrap gap-2">

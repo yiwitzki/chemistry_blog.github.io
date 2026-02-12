@@ -80,9 +80,32 @@ export function VideoEmbed({
   );
 }
 
+export function LocalVideo({
+  src,
+  title
+}: {
+  src: string;
+  title?: string;
+}) {
+  return (
+    <div className="my-8 overflow-hidden rounded-xl border border-border">
+      <video
+        controls
+        preload="metadata"
+        className="aspect-video w-full bg-black"
+        aria-label={title ?? 'video'}
+      >
+        <source src={assetPath(src)} type="video/mp4" />
+        你的浏览器不支持 video 标签。
+      </video>
+    </div>
+  );
+}
+
 export const mdxComponents = {
   Callout,
   Figure,
   Gallery,
-  VideoEmbed
+  VideoEmbed,
+  LocalVideo
 };

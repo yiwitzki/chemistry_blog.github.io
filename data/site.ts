@@ -27,7 +27,7 @@ export const siteConfig = {
   },
   stats: {
     activities: 42,
-    reach: '5,200+'
+    reach: '2500+'
   },
   navItems: {
     en: [

@@ -39,11 +39,11 @@ export const dictionary = {
     openArticle: 'Open article'
   },
   zh: {
-    mission: '我们把高中化学的好奇心转化为安全、严谨、可传播的科学成果。',
+    mission: '我们将化学知识融入趣味实验与生活中，运用生动的语言呈现给大家~',
     ctaPublications: '查看成果',
     ctaTeam: '认识团队',
     highlights: '团队亮点',
-    fourPillars: '四大方向',
+    fourPillars: '文章系列',
     featured: '精选推荐',
     latestUpdates: '最新更新',
     totalArticles: '文章总数',
