@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 210 20% 98%;
+  --foreground: 220 36% 16%;
+  --muted: 210 18% 94%;
+  --border: 214 23% 87%;
+  --card: 0 0% 100%;
+  --accent: 190 68% 42%;
+  --primary: 220 57% 34%;
+}
+
+.dark {
+  --background: 220 22% 11%;
+  --foreground: 213 31% 91%;
+  --muted: 222 16% 19%;
+  --border: 220 16% 27%;
+  --card: 220 20% 14%;
+  --accent: 187 64% 52%;
+  --primary: 206 73% 56%;
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+  background-image: radial-gradient(circle at top right, rgba(76, 149, 194, 0.15), transparent 45%),
+    radial-gradient(circle at left bottom, rgba(64, 91, 158, 0.12), transparent 40%);
+  min-height: 100vh;
+}
+
+a {
+  @apply text-primary underline-offset-4 transition;
+}
+
+a:hover {
+  @apply text-accent;
+}
+
+.prose :where(img):not(:where([class~='not-prose'] *)) {
+  @apply rounded-xl;
+}
