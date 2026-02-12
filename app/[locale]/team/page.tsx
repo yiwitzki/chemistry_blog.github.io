@@ -33,9 +33,11 @@ export default function TeamPage({ params }: { params: { locale: string } }) {
                   {member.name}
                 </Link>
               </h2>
-              <p className="text-sm text-foreground/75">{member.role}</p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                <Badge>{member.role}</Badge>
+                <Badge>{member.focus}</Badge>
+              </div>
             </div>
-            <Badge>{member.focus}</Badge>
           </Card>
         ))}
       </section>

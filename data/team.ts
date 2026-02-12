@@ -17,11 +17,11 @@ export const teamMembers: TeamMember[] = [
   {
     slug: 'tang-zelin',
     name: '唐泽霖 / Tang Zelin',
-    role: '撰稿 Writing',
-    focus: '科普写作与内容结构',
-    bioZh: '负责初稿撰写与论述逻辑梳理，确保内容通顺、层次清晰、易于理解。',
+    role: 'founder',
+    focus: 'leader',
+    bioZh: '我是唐泽霖，是这个网站的建立者，高一时因为对化学的喜爱，加入了化学社，高一下半学期结束时，我与其他3位化学社成员开始在“二附chem club”化学公众号上撰写并发布10余篇文章，内容包括一些社团活动的趣味实验及其原理，和生活中的化学，和化学知识科普等不同题材的文章，后面我们也将会同步在网站和公众号上发出绿色化学与环境保护等系列的文章。 希望通过发表一些有趣和有深度的内容来激起大家对化学的兴趣，并从各个角度来认识化学这门学科。',
     bioEn: 'Drafts article manuscripts and refines narrative flow for clarity.',
-    avatar: '/images/team/member-placeholder.svg',
+    avatar: '/images/team/tang-zelin.jpg',
     links: {
       email: 'tangzelin@example.com'
     }

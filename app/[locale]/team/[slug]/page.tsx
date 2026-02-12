@@ -30,8 +30,10 @@ export default function TeamMemberPage({ params }: { params: { locale: string; s
         />
         <div className="space-y-3">
           <h1 className="text-3xl font-bold">{member.name}</h1>
-          <p>{member.role}</p>
-          <Badge>{member.focus}</Badge>
+          <div className="flex flex-wrap gap-2">
+            <Badge>{member.role}</Badge>
+            <Badge>{member.focus}</Badge>
+          </div>
           <p className="max-w-2xl text-foreground/80">{locale === 'zh' ? member.bioZh : member.bioEn}</p>
           <div className="flex flex-wrap gap-3 text-sm">
             {member.links.email ? <a href={`mailto:${member.links.email}`}>Email</a> : null}
