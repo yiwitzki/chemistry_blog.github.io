@@ -6,6 +6,7 @@ import { categories } from '@/data/categories';
 import { siteConfig } from '@/data/site';
 import { getPublicationIndex, type PublicationMeta } from '@/lib/content';
 import { dictionary, getLocaleFromParams } from '@/lib/i18n';
+import { assetPath } from '@/lib/asset';
 
 const iconMap = {
   FlaskConical: Beaker,
@@ -43,7 +44,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           </div>
           <div className="mx-auto w-full max-w-[240px] md:max-w-[260px]">
             <Image
-              src="/images/home/club.jpg"
+              src={assetPath('/images/home/club.jpg')}
               alt={locale === 'zh' ? '化学社团标志' : 'Chem Club logo'}
               width={680}
               height={680}

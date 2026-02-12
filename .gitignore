@@ -1,4 +1,6 @@
 .next
+.next_*
+out/
 node_modules
 .vercel
 .env*
