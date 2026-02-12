@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Badge, Card, Container } from '@/components/ui';
 import { teamMembers } from '@/data/team';
 import { getLocaleFromParams } from '@/lib/i18n';
+import { assetPath } from '@/lib/asset';
 
 export default function TeamPage({ params }: { params: { locale: string } }) {
   const locale = getLocaleFromParams(params.locale);
@@ -19,7 +20,13 @@ export default function TeamPage({ params }: { params: { locale: string } }) {
       <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {teamMembers.map((member) => (
           <Card key={member.slug} className="space-y-3">
-            <Image src={member.avatar} alt={member.name} width={360} height={360} className="aspect-square rounded-xl object-cover" />
+            <Image
+              src={assetPath(member.avatar)}
+              alt={member.name}
+              width={360}
+              height={360}
+              className="aspect-square rounded-xl object-cover"
+            />
             <div>
               <h2 className="text-lg font-semibold">
                 <Link href={`/${locale}/team/${member.slug}`} className="no-underline">

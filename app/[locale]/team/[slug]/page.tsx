@@ -5,6 +5,7 @@ import { Badge, Card, Container } from '@/components/ui';
 import { teamMembers } from '@/data/team';
 import { getPublicationIndex } from '@/lib/content';
 import { getLocaleFromParams } from '@/lib/i18n';
+import { assetPath } from '@/lib/asset';
 
 export function generateStaticParams() {
   return teamMembers.flatMap((member) => [{ locale: 'en', slug: member.slug }, { locale: 'zh', slug: member.slug }]);
@@ -20,7 +21,13 @@ export default function TeamMemberPage({ params }: { params: { locale: string; s
   return (
     <Container className="space-y-8 py-12">
       <section className="grid gap-6 md:grid-cols-[280px_1fr]">
-        <Image src={member.avatar} alt={member.name} width={560} height={560} className="aspect-square rounded-2xl border border-border object-cover" />
+        <Image
+          src={assetPath(member.avatar)}
+          alt={member.name}
+          width={560}
+          height={560}
+          className="aspect-square rounded-2xl border border-border object-cover"
+        />
         <div className="space-y-3">
           <h1 className="text-3xl font-bold">{member.name}</h1>
           <p>{member.role}</p>

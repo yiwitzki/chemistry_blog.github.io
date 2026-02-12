@@ -3,6 +3,7 @@ import Link from 'next/link';
 import type { PublicationMeta } from '@/lib/content';
 import { categoryMap } from '@/data/categories';
 import { Badge, Card } from '@/components/ui';
+import { assetPath } from '@/lib/asset';
 import { formatDate } from '@/lib/utils';
 
 export function PublicationCard({ publication }: { publication: PublicationMeta }) {
@@ -13,7 +14,7 @@ export function PublicationCard({ publication }: { publication: PublicationMeta 
     <Card className="flex h-full flex-col gap-4">
       {publication.cover ? (
         <Image
-          src={publication.cover}
+          src={assetPath(publication.cover)}
           alt={publication.title}
           width={1200}
           height={675}

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import type { ReactNode } from 'react';
+import { assetPath } from '@/lib/asset';
 import { cn } from '@/lib/utils';
 
 type FigureProps = {
@@ -22,7 +23,7 @@ export function Callout({ type = 'info', children }: { type?: 'info' | 'warning'
 export function Figure({ src, alt, caption }: FigureProps) {
   return (
     <figure className="my-8">
-      <Image src={src} alt={alt} width={1200} height={800} className="rounded-xl border border-border" />
+      <Image src={assetPath(src)} alt={alt} width={1200} height={800} className="rounded-xl border border-border" />
       {caption ? <figcaption className="mt-2 text-center text-sm text-foreground/70">{caption}</figcaption> : null}
     </figure>
   );
@@ -34,7 +35,7 @@ export function Gallery({ images }: { images: Array<{ src: string; alt: string }
       {images.map((image) => (
         <Image
           key={image.src}
-          src={image.src}
+          src={assetPath(image.src)}
           alt={image.alt}
           width={1200}
           height={900}
