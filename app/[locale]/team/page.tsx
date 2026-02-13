@@ -10,7 +10,7 @@ export default function TeamPage({ params }: { params: { locale: string } }) {
   const locale = getLocaleFromParams(params.locale);
 
   return (
-    <Container className="min-h-[calc(100vh-220px)] space-y-6 py-4 md:py-6">
+    <Container className="space-y-6 py-4 md:py-6">
       <section>
         <h1 className="text-3xl font-bold">{locale === 'zh' ? '团队成员' : 'Team Members'}</h1>
         <p className="mt-2 hidden text-foreground/75 md:block">
