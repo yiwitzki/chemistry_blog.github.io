@@ -31,7 +31,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
       <section className="rounded-3xl border border-neutral-200/80 bg-gradient-to-b from-white to-neutral-50 p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
         <div className="grid items-start gap-8 md:grid-cols-[1.2fr_0.8fr]">
           <div className="flex h-full flex-col items-start">
-            <Badge>SHSBNU. Chem</Badge>
+            <Badge>Fan Chemistry</Badge>
             <h1 className="mt-8 max-w-3xl text-2xl font-bold leading-relaxed tracking-tight text-foreground md:mt-10 md:text-4xl">
               {t.mission}
             </h1>
