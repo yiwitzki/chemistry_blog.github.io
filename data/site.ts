@@ -11,10 +11,10 @@ export const defaultLocale: Locale = 'zh';
 
 export const siteConfig = {
   name: {
-    en: 'Fan Chemistry',
-    zh: 'Fan Chemistry'
+    en: 'Fun Chemistry',
+    zh: 'Fun Chemistry'
   },
-  shortName: 'Fan Chemistry',
+  shortName: 'Fun Chemistry',
   description: {
     en: 'A bilingual showcase for high school chemistry experiments, explainers, life applications, and green chemistry.',
     zh: '面向高中化学团队的中英双语成果展示站，聚焦实验、科普、生活应用与绿色化学。'
