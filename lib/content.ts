@@ -21,6 +21,7 @@ const publicationSchema = z.object({
   cover: z.string().optional(),
   authors: z.array(z.string()).default([]),
   contributors: z.array(z.string()).default([]),
+  contributorNotes: z.array(z.string()).default([]),
   readingTime: z.number().optional(),
   difficulty: z.enum(['Intro', 'Intermediate', 'Advanced']).optional(),
   references: z.array(z.string()).optional()

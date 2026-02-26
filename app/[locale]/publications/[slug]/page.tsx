@@ -23,6 +23,25 @@ export default async function PublicationDetailPage({ params }: { params: { loca
   const meta = getPublicationIndex(locale).find((item) => item.slug === article.slug);
   const related = meta ? getRelatedArticles(locale, meta, 3) : [];
   const contributors = teamMembers.filter((member) => article.contributors?.includes(member.slug));
+  const noteContributorsMap = new Map<string, Set<string>>();
+  for (const note of article.contributorNotes ?? []) {
+    const [rawRole, rawNames] = note.split('：');
+    if (!rawRole || !rawNames) continue;
+    const role = rawRole.trim();
+    const names = rawNames
+      .split(/[、,，]/)
+      .map((name) => name.trim())
+      .filter(Boolean);
+    for (const name of names) {
+      const roleSet = noteContributorsMap.get(name) ?? new Set<string>();
+      roleSet.add(role);
+      noteContributorsMap.set(name, roleSet);
+    }
+  }
+  const noteContributors = Array.from(noteContributorsMap.entries()).map(([name, roles]) => ({
+    name,
+    roles: Array.from(roles)
+  }));
 
   return (
     <Container className="py-10">
@@ -70,24 +89,39 @@ export default async function PublicationDetailPage({ params }: { params: { loca
 
           <section className="rounded-xl border border-border p-4">
             <h2 className="text-lg font-semibold">{t.contributors}</h2>
-            <ul className="mt-3 grid gap-3 sm:grid-cols-2">
-              {contributors.map((member) => (
-                <li key={member.slug}>
-                  <Link
-                    href={`/${locale}/team/${member.slug}`}
-                    className="block rounded-xl border border-border px-4 py-3 no-underline transition hover:bg-secondary/50"
-                  >
-                    <p className="text-sm font-semibold">{member.name}</p>
-                    <p className="mt-1 text-xs text-foreground/70">
-                      {locale === 'zh' ? '角色' : 'Role'}: {member.role}
-                    </p>
-                    <p className="text-xs text-foreground/70">
-                      {locale === 'zh' ? '职责' : 'Focus'}: {member.focus}
-                    </p>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {contributors.length || noteContributors.length ? (
+              <ul className="mt-3 grid gap-3 sm:grid-cols-2">
+                {contributors.map((member) => (
+                  <li key={member.slug}>
+                    <Link
+                      href={`/${locale}/team/${member.slug}`}
+                      className="block rounded-xl border border-border px-4 py-3 no-underline transition hover:bg-secondary/50"
+                    >
+                      <p className="text-sm font-semibold">{member.name}</p>
+                      <p className="mt-1 text-xs text-foreground/70">
+                        {locale === 'zh' ? '角色' : 'Role'}: {member.role}
+                      </p>
+                      <p className="text-xs text-foreground/70">
+                        {locale === 'zh' ? '职责' : 'Focus'}: {member.focus}
+                      </p>
+                    </Link>
+                  </li>
+                ))}
+                {noteContributors.map((member) => (
+                  <li key={member.name}>
+                    <div className="block rounded-xl border border-border px-4 py-3">
+                      <p className="text-sm font-semibold">{member.name}</p>
+                      <p className="mt-1 text-xs text-foreground/70">{locale === 'zh' ? '角色' : 'Role'}: 贡献成员</p>
+                      <p className="text-xs text-foreground/70">
+                        {locale === 'zh' ? '职责' : 'Focus'}: {member.roles.join('、')}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="mt-3 text-sm text-foreground/70">{locale === 'zh' ? '暂无贡献成员信息。' : 'No contributor details yet.'}</p>
+            )}
           </section>
 
           <section className="rounded-xl border border-border p-4">

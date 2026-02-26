@@ -5,4 +5,9 @@
 # URL|title=学期总结|date=2026-02-12|category=chem-explained|tags=电解质,科普|author=化学社团
 
 
-https://mp.weixin.qq.com/s/TO-xTsEaXJvp-0Mkybszcg|date=2025-12-31|category=fun-experiments|categoryLabelZh=化学趣味实验|tags=大象牙膏,实验
+https://mp.weixin.qq.com/s/vTZl1QuG406vf3_c8WRvMQ|date=2026-2-20|category=green-chemistry|categoryLabelZh=绿色化学|tags=酸雨,实验
+
+https://mp.weixin.qq.com/s/a2uh8Qq8sezfNpKLvIodqQ|date=2026-2-15|category=green-chemistry|categoryLabelZh=绿色化学|tags=塑料,回收,实验
+
+
+
