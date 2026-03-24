@@ -39,7 +39,11 @@ export const siteConfig = {
     zh: [
       { href: '/about', label: '关于' },
       { href: '/team', label: '团队' },
-      { href: '/publications', label: '成果' },
+      { href: '/publications', label: '社团成果' },
+      { href: '/curriculum', label: '校内国家课程' },
+      { href: '/competition', label: '化学竞赛（CCC/UKChO）' },
+      { href: '/ap-chemistry', label: 'AP化学' },
+      { href: '/organic-chemistry', label: '有机化学' },
       { href: '/contact', label: '联系' }
     ]
   } as const,
