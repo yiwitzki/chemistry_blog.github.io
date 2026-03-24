@@ -1,10 +1,11 @@
 import type { CategorySlug } from '@/data/categories';
 
-export const locales = ['zh'] as const;
+export const locales = ['zh', 'en'] as const;
 export type Locale = (typeof locales)[number];
 
 export const localeNames: Record<Locale, string> = {
-  zh: '中文'
+  zh: '中文',
+  en: 'English'
 };
 
 export const defaultLocale: Locale = 'zh';
@@ -16,10 +17,10 @@ export const siteConfig = {
   },
   shortName: 'Fun Chemistry',
   description: {
-    en: 'A bilingual showcase for high school chemistry experiments, explainers, life applications, and green chemistry.',
-    zh: '面向高中化学团队的中英双语成果展示站，聚焦实验、科普、生活应用与绿色化学。'
+    en: 'A bilingual high-school chemistry site featuring club publications, curriculum review, competition prep, AP Chemistry, and organic chemistry resources.',
+    zh: '面向高中化学团队的中英双语展示网站，聚焦社团成果、课程回放、竞赛备考、AP化学与有机化学。'
   },
-  url: 'https://example.vercel.app',
+  url: 'https://shsbnuchem.com',
   ogImage: '/images/covers/titration.svg',
   author: {
     name: 'Chem Team Editorial Group',
@@ -33,7 +34,11 @@ export const siteConfig = {
     en: [
       { href: '/about', label: 'About' },
       { href: '/team', label: 'Team' },
-      { href: '/publications', label: 'Publications' },
+      { href: '/publications', label: 'Club Highlights' },
+      { href: '/curriculum', label: 'School Chemistry' },
+      { href: '/competition', label: 'Competition' },
+      { href: '/ap-chemistry', label: 'AP Chemistry' },
+      { href: '/organic-chemistry', label: 'Organic Chemistry' },
       { href: '/contact', label: 'Contact' }
     ],
     zh: [

@@ -2,13 +2,14 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Badge, Card, Container } from '@/components/ui';
+import { locales } from '@/data/site';
 import { teamMembers } from '@/data/team';
 import { getPublicationIndex } from '@/lib/content';
 import { getLocaleFromParams } from '@/lib/i18n';
 import { assetPath } from '@/lib/asset';
 
 export function generateStaticParams() {
-  return teamMembers.map((member) => ({ locale: 'zh', slug: member.slug }));
+  return locales.flatMap((locale) => teamMembers.map((member) => ({ locale, slug: member.slug })));
 }
 
 export default function TeamMemberPage({ params }: { params: { locale: string; slug: string } }) {

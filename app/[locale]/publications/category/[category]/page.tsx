@@ -5,11 +5,12 @@ import { CategoryTabs } from '@/components/category-tabs';
 import { PublicationsFilters } from '@/components/publications-filters';
 import { PublicationsListClient } from '@/components/publications-list-client';
 import { categories, isCategorySlug } from '@/data/categories';
+import { locales } from '@/data/site';
 import { getPublicationFilters, getPublicationIndex } from '@/lib/content';
 import { dictionary, getLocaleFromParams } from '@/lib/i18n';
 
 export function generateStaticParams() {
-  return categories.map((category) => ({ locale: 'zh', category: category.slug }));
+  return locales.flatMap((locale) => categories.map((category) => ({ locale, category: category.slug })));
 }
 
 export default function PublicationsCategoryPage({ params }: { params: { locale: string; category: string } }) {

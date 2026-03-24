@@ -15,7 +15,11 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     title: siteConfig.name[locale],
     description: siteConfig.description[locale],
     alternates: {
-      canonical: `/${locale}`
+      canonical: `/${locale}`,
+      languages: {
+        zh: '/zh',
+        en: '/en'
+      }
     }
   };
 }

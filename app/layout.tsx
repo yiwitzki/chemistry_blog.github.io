@@ -5,28 +5,28 @@ import { siteConfig } from '@/data/site';
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.shortName} | 化学成果展示`,
+    default: `${siteConfig.shortName} | Chemistry Showcase`,
     template: `%s | ${siteConfig.shortName}`
   },
-  description: siteConfig.description.zh,
+  description: siteConfig.description.en,
   openGraph: {
-    title: `${siteConfig.shortName} | 化学成果展示`,
-    description: siteConfig.description.zh,
+    title: `${siteConfig.shortName} | Chemistry Showcase`,
+    description: siteConfig.description.en,
     images: [siteConfig.ogImage],
     type: 'website',
     url: siteConfig.url
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${siteConfig.shortName} | 化学成果展示`,
-    description: siteConfig.description.zh,
+    title: `${siteConfig.shortName} | Chemistry Showcase`,
+    description: siteConfig.description.en,
     images: [siteConfig.ogImage]
   }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="zh-CN" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body>{children}</body>
     </html>
   );

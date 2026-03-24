@@ -5,6 +5,7 @@ import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { siteConfig, type Locale } from '@/data/site';
 import { Container } from '@/components/ui';
+import { LanguageSwitcher } from '@/components/language-switcher';
 import { cn } from '@/lib/utils';
 
 export function Navbar({ locale }: { locale: Locale }) {
@@ -22,20 +23,23 @@ export function Navbar({ locale }: { locale: Locale }) {
           {siteConfig.name[locale]}
         </Link>
 
-        <nav
-          className="hidden items-center gap-2 rounded-full border border-white/50 bg-white/45 px-3 py-2 shadow-[0_10px_30px_rgba(104,150,98,0.08)] md:flex"
-          aria-label="Main navigation"
-        >
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={`/${locale}${item.href}`}
-              className="rounded-full px-3 py-1.5 text-sm no-underline transition hover:bg-white/80 hover:text-accent"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="hidden items-center gap-3 md:flex">
+          <nav
+            className="items-center gap-2 rounded-full border border-white/50 bg-white/45 px-3 py-2 shadow-[0_10px_30px_rgba(104,150,98,0.08)] md:flex"
+            aria-label="Main navigation"
+          >
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={`/${locale}${item.href}`}
+                className="rounded-full px-3 py-1.5 text-sm no-underline transition hover:bg-white/80 hover:text-accent"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+          <LanguageSwitcher locale={locale} />
+        </div>
 
         <button
           className="inline-flex rounded-lg border border-border bg-white/60 p-2 shadow-sm md:hidden"
@@ -50,6 +54,7 @@ export function Navbar({ locale }: { locale: Locale }) {
 
       <div id="mobile-nav" className={cn('border-t border-border bg-white/75 backdrop-blur md:hidden', open ? 'block' : 'hidden')}>
         <Container className="grid gap-2 py-3">
+          <LanguageSwitcher locale={locale} className="mb-2 w-fit" />
           {navItems.map((item) => (
             <Link
               key={item.href}

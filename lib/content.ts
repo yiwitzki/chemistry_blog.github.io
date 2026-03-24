@@ -5,6 +5,7 @@ import readingTime from 'reading-time';
 import { cache } from 'react';
 import { z } from 'zod';
 import { categories, categoryMap, isCategorySlug, type CategorySlug } from '@/data/categories';
+import { publicationTranslations } from '@/data/publication-translations';
 import type { Locale } from '@/data/site';
 import { normalizeTag } from '@/lib/utils';
 
@@ -54,7 +55,7 @@ function slugify(value: string) {
 }
 
 function getContentDir(locale: Locale) {
-  return path.join(contentRoot, locale, 'publications');
+  return path.join(contentRoot, locale === 'en' ? 'zh' : locale, 'publications');
 }
 
 function getFiles(locale: Locale) {
@@ -63,20 +64,52 @@ function getFiles(locale: Locale) {
   return fs.readdirSync(dir).filter((file) => file.endsWith('.mdx'));
 }
 
+function getPublicationTranslation(slug: string) {
+  return publicationTranslations[slug as keyof typeof publicationTranslations];
+}
+
+function translateAuthorsForEn(authors: string[]) {
+  return authors.map((author) =>
+    author.toLowerCase().includes('chem club') || author.includes('二附') ? 'SHSBNU Chem Club' : author
+  );
+}
+
+function getReadingTimeText(locale: Locale, minutes: number) {
+  return locale === 'zh' ? `${minutes} 分钟阅读` : `${minutes} min read`;
+}
+
+function applyLocaleTranslation(
+  locale: Locale,
+  meta: z.infer<typeof publicationSchema>
+): z.infer<typeof publicationSchema> {
+  if (locale !== 'en') return meta;
+
+  const translation = getPublicationTranslation(meta.slug);
+  if (!translation) return meta;
+
+  return {
+    ...meta,
+    title: translation.title,
+    summary: translation.summary,
+    authors: translateAuthorsForEn(meta.authors)
+  };
+}
+
 function parseFrontmatter(locale: Locale, fileName: string): PublicationMeta {
   const fullPath = path.join(getContentDir(locale), fileName);
   const raw = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(raw);
   const meta = publicationSchema.parse(data);
+  const localizedMeta = applyLocaleTranslation(locale, meta);
   const minutes = meta.readingTime ?? Math.max(1, Math.ceil(readingTime(content).minutes));
 
   return {
-    ...meta,
-    tags: meta.tags.map((tag) => normalizeTag(tag)),
+    ...localizedMeta,
+    tags: localizedMeta.tags.map((tag) => normalizeTag(tag)),
     locale,
     year: new Date(meta.date).getFullYear().toString(),
     readingTime: minutes,
-    readingTimeText: `${minutes} min read`
+    readingTimeText: getReadingTimeText(locale, minutes)
   };
 }
 
@@ -164,15 +197,16 @@ export const getPublicationContent = cache((locale: Locale, slug: string): Publi
   const raw = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(raw);
   const meta = publicationSchema.parse(data);
+  const localizedMeta = applyLocaleTranslation(locale, meta);
   const minutes = meta.readingTime ?? Math.max(1, Math.ceil(readingTime(content).minutes));
 
   return {
-    ...meta,
+    ...localizedMeta,
     locale,
     year: new Date(meta.date).getFullYear().toString(),
     readingTime: minutes,
-    readingTimeText: `${minutes} min read`,
-    tags: meta.tags.map((tag) => normalizeTag(tag)),
+    readingTimeText: getReadingTimeText(locale, minutes),
+    tags: localizedMeta.tags.map((tag) => normalizeTag(tag)),
     body: content,
     toc: extractHeadings(content)
   };

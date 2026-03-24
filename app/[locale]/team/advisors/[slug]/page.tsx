@@ -2,11 +2,12 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { Badge, Container } from '@/components/ui';
 import { advisors } from '@/data/advisors';
+import { locales } from '@/data/site';
 import { getLocaleFromParams } from '@/lib/i18n';
 import { assetPath } from '@/lib/asset';
 
 export function generateStaticParams() {
-  return advisors.map((advisor) => ({ locale: 'zh', slug: advisor.slug }));
+  return locales.flatMap((locale) => advisors.map((advisor) => ({ locale, slug: advisor.slug })));
 }
 
 export default function AdvisorDetailPage({ params }: { params: { locale: string; slug: string } }) {

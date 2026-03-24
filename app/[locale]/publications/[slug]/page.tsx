@@ -4,13 +4,14 @@ import { Badge, Container } from '@/components/ui';
 import { TOC } from '@/components/toc';
 import { MDXRenderer } from '@/components/mdx-renderer';
 import { teamMembers } from '@/data/team';
+import { locales } from '@/data/site';
 import { getCategoryLabel, getPublicationContent, getPublicationIndex, getRelatedArticles } from '@/lib/content';
 import { dictionary, getLocaleFromParams } from '@/lib/i18n';
 import { formatDate } from '@/lib/utils';
 
 export function generateStaticParams() {
-  const zh = getPublicationIndex('zh').map((item) => ({ locale: 'zh', slug: item.slug }));
-  return zh;
+  const slugs = getPublicationIndex('zh').map((item) => item.slug);
+  return locales.flatMap((locale) => slugs.map((slug) => ({ locale, slug })));
 }
 
 export default async function PublicationDetailPage({ params }: { params: { locale: string; slug: string } }) {
@@ -71,6 +72,12 @@ export default async function PublicationDetailPage({ params }: { params: { loca
               ))}
             </div>
           </header>
+
+          {locale === 'en' ? (
+            <div className="rounded-xl border border-border bg-secondary/30 p-4 text-sm text-foreground/80">
+              This English page is aligned with the current Chinese article set. A full English body translation is still being prepared, so the original Chinese text is shown below for now.
+            </div>
+          ) : null}
 
           <div className="prose prose-slate max-w-none dark:prose-invert">
             <MDXRenderer source={article.body} />

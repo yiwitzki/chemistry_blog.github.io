@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Beaker, BookOpen, Home, Leaf } from 'lucide-react';
 import { Badge, Card, Container } from '@/components/ui';
+import { HomeQuickNav } from '@/components/home-quick-nav';
 import { categories } from '@/data/categories';
 import { siteConfig } from '@/data/site';
 import { getPublicationIndex, type PublicationMeta } from '@/lib/content';
@@ -35,7 +36,6 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             <h1 className="mt-8 max-w-3xl text-2xl font-bold leading-relaxed tracking-tight text-foreground md:mt-10 md:text-4xl">
               {t.mission}
             </h1>
-            <p className="mt-4 text-sm font-medium text-foreground/65">实验规范 · 科学表达 · 校园传播</p>
             <div className="mt-auto flex flex-wrap gap-3 pt-6">
               <Link href={`/${locale}/publications`} className="rounded-xl border border-primary bg-primary px-4 py-2 text-sm text-white no-underline">
                 {t.ctaPublications}
@@ -48,7 +48,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           <div className="mx-auto w-full max-w-[260px] md:max-w-[300px]">
             <Image
               src={assetPath('/images/home/club.jpg')}
-              alt={locale === 'zh' ? '化学社团标志' : 'Chem Club logo'}
+              alt={locale === 'zh' ? 'Chem Club logo' : 'Chem Club logo'}
               width={680}
               height={680}
               className="h-auto w-full rounded-2xl border border-border bg-black/5 object-cover shadow-soft"
@@ -57,6 +57,8 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           </div>
         </div>
       </section>
+
+      <HomeQuickNav locale={locale} />
 
       <section>
         <h2 className="mb-4 text-2xl font-semibold">{t.highlights}</h2>
@@ -93,7 +95,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
                     <Icon size={18} />
                   </span>
                   <span className="rounded-full border border-border bg-white px-2.5 py-1 text-xs font-medium text-foreground/75">
-                    {locale === 'zh' ? `${categoryCount} 篇` : `${categoryCount} posts`}
+                    {locale === 'zh' ? `${categoryCount} posts` : `${categoryCount} posts`}
                   </span>
                 </div>
                 <h3 className="mt-4 text-[15px] font-semibold text-foreground">{locale === 'zh' ? category.zh : category.en}</h3>

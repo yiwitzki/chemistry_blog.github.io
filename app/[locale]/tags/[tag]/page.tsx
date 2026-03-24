@@ -1,11 +1,12 @@
 import { Container } from '@/components/ui';
 import { PublicationCard } from '@/components/publication-card';
+import { locales } from '@/data/site';
 import { getAllTags, getPublicationIndex } from '@/lib/content';
 import { getLocaleFromParams } from '@/lib/i18n';
 
 export function generateStaticParams() {
-  const zh = getAllTags('zh').map((tag) => ({ locale: 'zh', tag }));
-  return zh;
+  const tags = getAllTags('zh');
+  return locales.flatMap((locale) => tags.map((tag) => ({ locale, tag })));
 }
 
 export default function TagPage({ params }: { params: { locale: string; tag: string } }) {

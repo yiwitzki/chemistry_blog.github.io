@@ -24,6 +24,18 @@ export default function CccCcoResourcesPage({ params }: { params: { locale: stri
             : 'A single entry point for CCC/CCO handouts and revision materials.'}
         </p>
       </Link>
+
+      <Link
+        href={`/${locale}/competition/resources/ccc-cco/topic-past-papers`}
+        className="block rounded-2xl border border-border bg-card p-6 no-underline shadow-soft transition hover:border-neutral-300 hover:shadow-md"
+      >
+        <h2 className="text-xl font-semibold text-foreground">{isZh ? '知识点对应真题' : 'Topic-Based Past Papers'}</h2>
+        <p className="mt-3 text-sm leading-7 text-foreground/75">
+          {isZh
+            ? '按知识点整理 CCC/CCO 真题，方便针对性复习与查缺补漏。'
+            : 'Practice CCC/CCO past-paper questions grouped by topic.'}
+        </p>
+      </Link>
     </Container>
   );
 }
