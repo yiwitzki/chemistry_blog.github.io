@@ -28,10 +28,10 @@ export default function HomePage({ params }: { params: { locale: string } }) {
 
   return (
     <Container className="space-y-12 py-12">
-      <section className="rounded-3xl border border-neutral-200/80 bg-gradient-to-b from-white to-neutral-50 p-8 shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
+      <section className="rounded-3xl border border-neutral-200/80 bg-gradient-to-br from-white to-[rgba(238,247,234,0.92)] p-8 shadow-[0_10px_28px_rgba(87,128,81,0.05)]">
         <div className="grid items-start gap-8 md:grid-cols-[1.2fr_0.8fr]">
           <div className="flex h-full flex-col items-start">
-            <Badge>Fun Chemistry</Badge>
+            <Badge className="border-[rgba(118,176,96,0.22)] bg-[rgba(241,249,236,0.9)] text-[rgba(59,106,60,0.95)]">Fun Chemistry</Badge>
             <h1 className="mt-8 max-w-3xl text-2xl font-bold leading-relaxed tracking-tight text-foreground md:mt-10 md:text-4xl">
               {t.mission}
             </h1>
