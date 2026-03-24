@@ -15,10 +15,10 @@ export default function CompetitionStrategyPage({ params }: { params: { locale: 
       </section>
 
       <section className="rounded-2xl border border-border bg-card p-6 shadow-soft">
-        <p className="text-sm leading-7 text-foreground/75">
+        <p className="text-sm font-medium leading-8 text-foreground/90">
           {isZh
-            ? '建议按专题建立复习计划，先夯实无机、热化学、平衡、电化学和有机基础，再通过历年题与限时训练提升综合解题速度。'
-            : 'Study by topic, solidify fundamentals first, and then use timed past-paper practice to improve integrated problem-solving speed.'}
+            ? '高一夯实基础，暑假提前学学校化学加速课，开学跟进竞赛辅导。基础优异可同步备考 AP 化学，搭建完整知识框架；高一必须自学有机化学，借助网上系统课程掌握核心反应与机理，弥补校内进度不足。高二按学校节奏深化知识，针对性攻克 UKCho 偏重的有机推断、机理书写，以及 CCC/CCO 的无机、物理化学考点，分模块刷题并整理错题。高三聚焦有机化学进阶学习，强化三大竞赛的真题模拟，提升答题速度与逻辑严谨性，兼顾知识点融会贯通与应试技巧，冲刺高含金量奖项。'
+            : 'Build strong foundations in the first year, move ahead with accelerated chemistry in the summer, and then follow competition coaching while continuing AP Chemistry and organic chemistry self-study. In the second year, deepen knowledge with targeted practice for UKChO organic reasoning and mechanisms as well as CCC/CCO inorganic and physical chemistry topics. In the third year, focus on advanced organic chemistry, intensive mock exams, faster problem solving, and high-level competition technique.'}
         </p>
       </section>
     </Container>
