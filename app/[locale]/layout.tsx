@@ -41,9 +41,15 @@ export default function LocaleLayout({
       >
         Skip to content
       </a>
-      <Navbar locale={locale} />
-      <main id="main-content">{children}</main>
-      <Footer locale={locale} />
+      <div className="relative min-h-screen overflow-x-hidden">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[18rem] bg-[radial-gradient(circle_at_top,rgba(251,255,248,0.75),rgba(255,255,255,0)_62%)]"
+        />
+        <Navbar locale={locale} />
+        <main id="main-content">{children}</main>
+        <Footer locale={locale} />
+      </div>
     </>
   );
 }
