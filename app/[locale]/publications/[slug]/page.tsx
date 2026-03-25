@@ -26,7 +26,7 @@ export default async function PublicationDetailPage({ params }: { params: { loca
   const contributors = teamMembers.filter((member) => article.contributors?.includes(member.slug));
   const noteContributorsMap = new Map<string, Set<string>>();
   for (const note of article.contributorNotes ?? []) {
-    const [rawRole, rawNames] = note.split('：');
+    const [rawRole, rawNames] = note.split(/[:：]/);
     if (!rawRole || !rawNames) continue;
     const role = rawRole.trim();
     const names = rawNames
@@ -73,12 +73,6 @@ export default async function PublicationDetailPage({ params }: { params: { loca
             </div>
           </header>
 
-          {locale === 'en' ? (
-            <div className="rounded-xl border border-border bg-secondary/30 p-4 text-sm text-foreground/80">
-              This English page is aligned with the current Chinese article set. A full English body translation is still being prepared, so the original Chinese text is shown below for now.
-            </div>
-          ) : null}
-
           <div className="prose prose-slate max-w-none dark:prose-invert">
             <MDXRenderer source={article.body} />
           </div>
@@ -118,9 +112,9 @@ export default async function PublicationDetailPage({ params }: { params: { loca
                   <li key={member.name}>
                     <div className="block rounded-xl border border-border px-4 py-3">
                       <p className="text-sm font-semibold">{member.name}</p>
-                      <p className="mt-1 text-xs text-foreground/70">{locale === 'zh' ? '角色' : 'Role'}: 贡献成员</p>
+                      <p className="mt-1 text-xs text-foreground/70">{locale === 'zh' ? '角色' : 'Role'}: {locale === 'zh' ? '贡献成员' : 'Contributor'}</p>
                       <p className="text-xs text-foreground/70">
-                        {locale === 'zh' ? '职责' : 'Focus'}: {member.roles.join('、')}
+                        {locale === 'zh' ? '职责' : 'Focus'}: {member.roles.join(locale === 'zh' ? '、' : ', ')}
                       </p>
                     </div>
                   </li>

@@ -58,6 +58,16 @@ function getContentDir(locale: Locale) {
   return path.join(contentRoot, locale === 'en' ? 'zh' : locale, 'publications');
 }
 
+function getEnglishTranslationPath(slug: string) {
+  return path.join(contentRoot, 'en-translations', 'publications', `${slug}.mdx`);
+}
+
+function getEnglishTranslationBody(slug: string) {
+  const filePath = getEnglishTranslationPath(slug);
+  if (!fs.existsSync(filePath)) return null;
+  return fs.readFileSync(filePath, 'utf8');
+}
+
 function getFiles(locale: Locale) {
   const dir = getContentDir(locale);
   if (!fs.existsSync(dir)) return [];
@@ -71,6 +81,12 @@ function getPublicationTranslation(slug: string) {
 function translateAuthorsForEn(authors: string[]) {
   return authors.map((author) =>
     author.toLowerCase().includes('chem club') || author.includes('二附') ? 'SHSBNU Chem Club' : author
+  );
+}
+
+function translateContributorNotesForEn(notes: string[]) {
+  return notes.map((note) =>
+    note.replace(/^撰稿：/, 'Writing: ').replace(/^排版：/, 'Layout: ').replace(/^审核：/, 'Review: ')
   );
 }
 
@@ -91,7 +107,8 @@ function applyLocaleTranslation(
     ...meta,
     title: translation.title,
     summary: translation.summary,
-    authors: translateAuthorsForEn(meta.authors)
+    authors: translateAuthorsForEn(meta.authors),
+    contributorNotes: translateContributorNotesForEn(meta.contributorNotes)
   };
 }
 
@@ -101,7 +118,8 @@ function parseFrontmatter(locale: Locale, fileName: string): PublicationMeta {
   const { data, content } = matter(raw);
   const meta = publicationSchema.parse(data);
   const localizedMeta = applyLocaleTranslation(locale, meta);
-  const minutes = meta.readingTime ?? Math.max(1, Math.ceil(readingTime(content).minutes));
+  const bodySource = locale === 'en' ? getEnglishTranslationBody(meta.slug) ?? content : content;
+  const minutes = meta.readingTime ?? Math.max(1, Math.ceil(readingTime(bodySource).minutes));
 
   return {
     ...localizedMeta,
@@ -198,7 +216,8 @@ export const getPublicationContent = cache((locale: Locale, slug: string): Publi
   const { data, content } = matter(raw);
   const meta = publicationSchema.parse(data);
   const localizedMeta = applyLocaleTranslation(locale, meta);
-  const minutes = meta.readingTime ?? Math.max(1, Math.ceil(readingTime(content).minutes));
+  const bodySource = locale === 'en' ? getEnglishTranslationBody(meta.slug) ?? content : content;
+  const minutes = meta.readingTime ?? Math.max(1, Math.ceil(readingTime(bodySource).minutes));
 
   return {
     ...localizedMeta,
@@ -207,8 +226,8 @@ export const getPublicationContent = cache((locale: Locale, slug: string): Publi
     readingTime: minutes,
     readingTimeText: getReadingTimeText(locale, minutes),
     tags: localizedMeta.tags.map((tag) => normalizeTag(tag)),
-    body: content,
-    toc: extractHeadings(content)
+    body: bodySource,
+    toc: extractHeadings(bodySource)
   };
 });
 
