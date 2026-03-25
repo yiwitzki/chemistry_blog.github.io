@@ -1,43 +1,40 @@
 import { Container } from '@/components/ui';
 import { getLocaleFromParams } from '@/lib/i18n';
 
+const partNamesZh = ['第一部分', '第二部分', '第三部分', '第四部分'] as const;
+
+const lessons = [
+  {
+    key: 'voltaic-cell',
+    zhTitle: '原电池',
+    enTitle: 'Voltaic Cell',
+    zhDescription: '课堂演示视频已切分为 4 段并接入站内播放器，便于在线加载、分段复习和定位重点内容。',
+    enDescription: 'The lesson video is split into 4 sections and embedded with the site player for easier loading, review, and navigation.',
+    parts: [
+      { index: 1, time: '00:00 - 10:39', src: '/videos/curriculum/parts/voltaic-cell-part-1.mp4' },
+      { index: 2, time: '10:39 - 21:18', src: '/videos/curriculum/parts/voltaic-cell-part-2.mp4' },
+      { index: 3, time: '21:18 - 31:57', src: '/videos/curriculum/parts/voltaic-cell-part-3.mp4' },
+      { index: 4, time: '31:57 - 42:36', src: '/videos/curriculum/parts/voltaic-cell-part-4.mp4' }
+    ]
+  },
+  {
+    key: 'metals-extraction-application',
+    zhTitle: '金属的制备和应用',
+    enTitle: 'Extraction and Application of Metals',
+    zhDescription: '这节课的回放同样已切分为 4 段，方便在网页端快速加载，并按章节节奏逐段复习。',
+    enDescription: 'This lesson is also split into 4 sections for faster loading on the site and easier step-by-step review.',
+    parts: [
+      { index: 1, time: '00:00 - 07:57', src: '/videos/curriculum/parts/metals-extraction-application-part-1.mp4' },
+      { index: 2, time: '07:57 - 15:55', src: '/videos/curriculum/parts/metals-extraction-application-part-2.mp4' },
+      { index: 3, time: '15:55 - 23:53', src: '/videos/curriculum/parts/metals-extraction-application-part-3.mp4' },
+      { index: 4, time: '23:53 - 31:51', src: '/videos/curriculum/parts/metals-extraction-application-part-4.mp4' }
+    ]
+  }
+] as const;
+
 export default function CurriculumPage({ params }: { params: { locale: string } }) {
   const locale = getLocaleFromParams(params.locale);
   const isZh = locale === 'zh';
-  const parts = [
-    {
-      index: 1,
-      zhTitle: '第一部分',
-      enTitle: 'Part 1',
-      zhTime: '00:00 - 10:39',
-      enTime: '00:00 - 10:39',
-      src: '/videos/curriculum/parts/voltaic-cell-part-1.mp4'
-    },
-    {
-      index: 2,
-      zhTitle: '第二部分',
-      enTitle: 'Part 2',
-      zhTime: '10:39 - 21:18',
-      enTime: '10:39 - 21:18',
-      src: '/videos/curriculum/parts/voltaic-cell-part-2.mp4'
-    },
-    {
-      index: 3,
-      zhTitle: '第三部分',
-      enTitle: 'Part 3',
-      zhTime: '21:18 - 31:57',
-      enTime: '21:18 - 31:57',
-      src: '/videos/curriculum/parts/voltaic-cell-part-3.mp4'
-    },
-    {
-      index: 4,
-      zhTitle: '第四部分',
-      enTitle: 'Part 4',
-      zhTime: '31:57 - 42:36',
-      enTime: '31:57 - 42:36',
-      src: '/videos/curriculum/parts/voltaic-cell-part-4.mp4'
-    }
-  ];
 
   return (
     <Container className="space-y-8 py-12">
@@ -51,47 +48,53 @@ export default function CurriculumPage({ params }: { params: { locale: string } 
         </p>
       </section>
 
-      <section className="rounded-3xl border border-border/80 bg-white/90 p-6 shadow-[0_16px_40px_rgba(31,41,55,0.08)]">
-        <div className="flex flex-col gap-2">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/45">
-            {isZh ? '国家课程课程回放' : 'School Chemistry Replay'}
-          </p>
-          <h2 className="text-2xl font-semibold text-foreground">{isZh ? '原电池' : 'Voltaic Cell'}</h2>
-          <p className="text-sm leading-7 text-foreground/70">
-            {isZh
-              ? '课堂演示视频已切分为 4 段并接入站内播放器，便于在线加载、分段复习和定位重点内容。'
-              : 'The lesson video is split into 4 sections and embedded with the site player for easier loading, review, and navigation.'}
-          </p>
-        </div>
+      {lessons.map((lesson) => (
+        <section
+          key={lesson.key}
+          className="rounded-3xl border border-border/80 bg-white/90 p-6 shadow-[0_16px_40px_rgba(31,41,55,0.08)]"
+        >
+          <div className="flex flex-col gap-2">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/45">
+              {isZh ? '国家课程课程回放' : 'School Chemistry Replay'}
+            </p>
+            <h2 className="text-2xl font-semibold text-foreground">{isZh ? lesson.zhTitle : lesson.enTitle}</h2>
+            <p className="text-sm leading-7 text-foreground/70">
+              {isZh ? lesson.zhDescription : lesson.enDescription}
+            </p>
+          </div>
 
-        <div className="mt-6 grid gap-6">
-          {parts.map((part) => (
-            <article key={part.index} className="rounded-2xl border border-border/80 bg-neutral-50/70 p-4 shadow-[0_8px_24px_rgba(15,23,42,0.05)]">
-              <div className="mb-3 flex flex-col gap-1">
-                <h3 className="text-lg font-semibold text-foreground">
-                  {isZh ? part.zhTitle : part.enTitle}
-                </h3>
-                <p className="text-sm text-foreground/65">
-                  {isZh ? '时间范围：' : 'Time range: '}
-                  {isZh ? part.zhTime : part.enTime}
-                </p>
-              </div>
+          <div className="mt-6 grid gap-6">
+            {lesson.parts.map((part) => (
+              <article
+                key={`${lesson.key}-${part.index}`}
+                className="rounded-2xl border border-border/80 bg-neutral-50/70 p-4 shadow-[0_8px_24px_rgba(15,23,42,0.05)]"
+              >
+                <div className="mb-3 flex flex-col gap-1">
+                  <h3 className="text-lg font-semibold text-foreground">
+                    {isZh ? partNamesZh[part.index - 1] : `Part ${part.index}`}
+                  </h3>
+                  <p className="text-sm text-foreground/65">
+                    {isZh ? '时间范围：' : 'Time range: '}
+                    {part.time}
+                  </p>
+                </div>
 
-              <div className="overflow-hidden rounded-2xl border border-border bg-black shadow-[0_20px_45px_rgba(15,23,42,0.18)]">
-                <video
-                  controls
-                  preload="metadata"
-                  className="aspect-video w-full"
-                  aria-label={`${isZh ? '原电池课程回放' : 'Voltaic cell class replay'} ${part.index}`}
-                >
-                  <source src={part.src} type="video/mp4" />
-                  {isZh ? '你的浏览器不支持 video 标签。' : 'Your browser does not support the video tag.'}
-                </video>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+                <div className="overflow-hidden rounded-2xl border border-border bg-black shadow-[0_20px_45px_rgba(15,23,42,0.18)]">
+                  <video
+                    controls
+                    preload="metadata"
+                    className="aspect-video w-full"
+                    aria-label={`${isZh ? `${lesson.zhTitle}课程回放` : `${lesson.enTitle} class replay`} ${part.index}`}
+                  >
+                    <source src={part.src} type="video/mp4" />
+                    {isZh ? '你的浏览器不支持 video 标签。' : 'Your browser does not support the video tag.'}
+                  </video>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
     </Container>
   );
 }

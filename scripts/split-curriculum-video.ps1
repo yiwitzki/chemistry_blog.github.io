@@ -5,6 +5,9 @@ param(
   [Parameter(Mandatory = $true)]
   [string]$OutputDir,
 
+  [Parameter(Mandatory = $true)]
+  [string]$OutputPrefix,
+
   [int]$Parts = 4
 )
 
@@ -124,7 +127,7 @@ for ($index = 0; $index -lt $Parts; $index++) {
   $insertMethod = $clips.Property.PropertyType.GetMethod('Insert')
   $insertMethod.Invoke($clips.Value, @([int]0, $segmentClip)) | Out-Null
 
-  $outputName = "voltaic-cell-part-$partNumber.mp4"
+  $outputName = "$OutputPrefix-part-$partNumber.mp4"
   $outputFile = Await-AsyncOperation (
     $outputFolder.CreateFileAsync($outputName, [Windows.Storage.CreationCollisionOption]::ReplaceExisting)
   ) ([Windows.Storage.StorageFile])
