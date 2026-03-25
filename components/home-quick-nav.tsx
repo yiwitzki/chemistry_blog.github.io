@@ -7,13 +7,13 @@ import type { Locale } from '@/data/site';
 const quickNavItems = {
   zh: [
     { href: '/competition', label: '化学竞赛（CCC/UKChO）' },
-    { href: '/competition/resources', label: '竞赛资料' },
+    { href: '/curriculum', label: '国家课程' },
     { href: '/ap-chemistry', label: 'AP化学' },
     { href: '/organic-chemistry', label: '有机化学' }
   ],
   en: [
     { href: '/competition', label: 'Competition (CCC/UKChO)' },
-    { href: '/competition/resources', label: 'Competition Resources' },
+    { href: '/curriculum', label: 'National Curriculum' },
     { href: '/ap-chemistry', label: 'AP Chemistry' },
     { href: '/organic-chemistry', label: 'Organic Chemistry' }
   ]
@@ -29,8 +29,8 @@ export function HomeQuickNav({ locale }: { locale: Locale }) {
         <p className="text-sm font-semibold text-foreground">{locale === 'zh' ? '学习专区快捷入口' : 'Quick Study Access'}</p>
         <p className="mt-1 text-sm text-foreground/70">
           {locale === 'zh'
-            ? '下拉即可直达竞赛资料、AP化学和有机化学页面。'
-            : 'Use the dropdown to jump to competition resources, AP Chemistry, or Organic Chemistry.'}
+            ? '下拉即可直达国家课程、AP化学和有机化学页面。'
+            : 'Use the dropdown to jump to the national curriculum, AP Chemistry, or Organic Chemistry.'}
         </p>
       </div>
 
