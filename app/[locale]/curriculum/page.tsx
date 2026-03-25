@@ -9,7 +9,8 @@ const lessons = [
     zhTitle: '原电池',
     enTitle: 'Voltaic Cell',
     zhDescription: '课堂演示视频已切分为 4 段并接入站内播放器，便于在线加载、分段复习和定位重点内容。',
-    enDescription: 'The lesson video is split into 4 sections and embedded with the site player for easier loading, review, and navigation.',
+    enDescription:
+      'The lesson video is split into 4 sections and embedded with the site player for easier loading, review, and navigation.',
     parts: [
       { index: 1, time: '00:00 - 10:39', src: '/videos/curriculum/parts/voltaic-cell-part-1.mp4' },
       { index: 2, time: '10:39 - 21:18', src: '/videos/curriculum/parts/voltaic-cell-part-2.mp4' },
@@ -22,12 +23,27 @@ const lessons = [
     zhTitle: '金属的制备和应用',
     enTitle: 'Extraction and Application of Metals',
     zhDescription: '这节课的回放同样已切分为 4 段，方便在网页端快速加载，并按章节节奏逐段复习。',
-    enDescription: 'This lesson is also split into 4 sections for faster loading on the site and easier step-by-step review.',
+    enDescription:
+      'This lesson is also split into 4 sections for faster loading on the site and easier step-by-step review.',
     parts: [
       { index: 1, time: '00:00 - 07:57', src: '/videos/curriculum/parts/metals-extraction-application-part-1.mp4' },
       { index: 2, time: '07:57 - 15:55', src: '/videos/curriculum/parts/metals-extraction-application-part-2.mp4' },
       { index: 3, time: '15:55 - 23:53', src: '/videos/curriculum/parts/metals-extraction-application-part-3.mp4' },
       { index: 4, time: '23:53 - 31:51', src: '/videos/curriculum/parts/metals-extraction-application-part-4.mp4' }
+    ]
+  },
+  {
+    key: 'electrolysis',
+    zhTitle: '电解',
+    enTitle: 'Electrolysis',
+    zhDescription: '这节课也已切成 4 段，适合按知识点拆分观看，回看时加载更快、定位更直观。',
+    enDescription:
+      'This lesson is also split into 4 sections so students can review by topic with faster loading and clearer navigation.',
+    parts: [
+      { index: 1, time: '00:00 - 04:24', src: '/videos/curriculum/parts/electrolysis-part-1.mp4' },
+      { index: 2, time: '04:24 - 08:49', src: '/videos/curriculum/parts/electrolysis-part-2.mp4' },
+      { index: 3, time: '08:49 - 13:14', src: '/videos/curriculum/parts/electrolysis-part-3.mp4' },
+      { index: 4, time: '13:14 - 17:39', src: '/videos/curriculum/parts/electrolysis-part-4.mp4' }
     ]
   }
 ] as const;
@@ -58,9 +74,7 @@ export default function CurriculumPage({ params }: { params: { locale: string } 
               {isZh ? '国家课程课程回放' : 'School Chemistry Replay'}
             </p>
             <h2 className="text-2xl font-semibold text-foreground">{isZh ? lesson.zhTitle : lesson.enTitle}</h2>
-            <p className="text-sm leading-7 text-foreground/70">
-              {isZh ? lesson.zhDescription : lesson.enDescription}
-            </p>
+            <p className="text-sm leading-7 text-foreground/70">{isZh ? lesson.zhDescription : lesson.enDescription}</p>
           </div>
 
           <div className="mt-6 grid gap-6">
