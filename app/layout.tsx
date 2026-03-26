@@ -4,6 +4,11 @@ import { siteConfig } from '@/data/site';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
+  icons: {
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+    apple: '/apple-touch-icon.svg'
+  },
   title: {
     default: `${siteConfig.shortName} | Chemistry Showcase`,
     template: `%s | ${siteConfig.shortName}`
