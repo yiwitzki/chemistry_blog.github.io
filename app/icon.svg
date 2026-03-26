@@ -1,0 +1,29 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="flaskFillClip">
+      <path d="M114 34V84L59 175C51 188 60 204 76 204H180C196 204 205 188 197 175L142 84V34H114Z" />
+    </clipPath>
+  </defs>
+  <rect width="256" height="256" rx="64" fill="#F2F6EF"/>
+  <g clip-path="url(#flaskFillClip)">
+    <rect x="50" y="30" width="56" height="180" fill="#F31C1C"/>
+    <rect x="100" y="30" width="56" height="180" fill="#F5E51B"/>
+    <rect x="150" y="30" width="56" height="180" fill="#35C7F3"/>
+  </g>
+  <path
+    d="M100 34H156"
+    stroke="#13315C"
+    stroke-width="16"
+    stroke-linecap="round"
+  />
+  <path
+    d="M114 34V84L59 175C51 188 60 204 76 204H180C196 204 205 188 197 175L142 84V34"
+    stroke="#13315C"
+    stroke-width="16"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <circle cx="100" cy="113" r="9" fill="#F31C1C" opacity="0.9"/>
+  <circle cx="128" cy="138" r="12" fill="#F5E51B" opacity="0.95"/>
+  <circle cx="156" cy="115" r="10" fill="#35C7F3" opacity="0.95"/>
+</svg>
