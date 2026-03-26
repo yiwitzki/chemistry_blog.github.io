@@ -15,14 +15,6 @@ export default function CompetitionResourcesPage({ params }: { params: { locale:
         </h1>
       </section>
 
-      <section className="rounded-2xl border border-border bg-card p-6 shadow-soft">
-        <p className="text-sm leading-7 text-foreground/75">
-          {isZh
-            ? '这里可以继续补充竞赛讲义、专题练习、真题汇编和实验资料，后续你只要把内容往这个页面里加就行。'
-            : 'Use this page to collect handouts, topic exercises, past papers, and lab resources for competition review.'}
-        </p>
-      </section>
-
       <section className="grid gap-4 md:grid-cols-2">
         <Link
           href={`/${locale}/competition/resources/ccc-cco`}
