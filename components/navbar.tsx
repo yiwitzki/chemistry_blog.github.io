@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
@@ -15,12 +16,18 @@ export function Navbar({ locale }: { locale: Locale }) {
   return (
     <header className="sticky top-0 z-50 border-b border-border/80 bg-background/85 backdrop-blur-xl">
       <Container className="flex h-16 items-center justify-between gap-4">
-        <Link href={`/${locale}`} className="relative font-semibold text-foreground no-underline">
-          <span
-            aria-hidden="true"
-            className="absolute -left-3 top-1/2 h-8 w-8 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(148,214,135,0.35),rgba(148,214,135,0))]"
-          />
-          {siteConfig.name[locale]}
+        <Link href={`/${locale}`} className="flex min-w-0 items-center gap-3 font-semibold text-foreground no-underline">
+          <span className="relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full border border-border/60 bg-white/90 shadow-sm">
+            <Image
+              src="/images/school-badge.png"
+              alt="The Second High School Attached to BNU badge"
+              fill
+              sizes="56px"
+              className="object-contain p-0.5"
+              priority
+            />
+          </span>
+          <span className="truncate">{siteConfig.name[locale]}</span>
         </Link>
 
         <div className="hidden items-center gap-3 md:flex">

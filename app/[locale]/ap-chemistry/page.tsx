@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { Container } from '@/components/ui';
 import { getLocaleFromParams } from '@/lib/i18n';
 
+const apCourseLink = 'https://m.shsbnu.net/course/view.php?id=481';
+
 export default function ApChemistryPage({ params }: { params: { locale: string } }) {
   const locale = getLocaleFromParams(params.locale);
   const isZh = locale === 'zh';
@@ -38,6 +40,23 @@ export default function ApChemistryPage({ params }: { params: { locale: string }
             : 'A collection of AP Chemistry unit notes, formula sheets, lab prompts, and past-paper resources for focused revision.'}
         </p>
       </Link>
+
+      <a
+        href={apCourseLink}
+        target="_blank"
+        rel="noreferrer"
+        className="block rounded-3xl border border-border bg-card p-8 no-underline shadow-soft transition hover:border-neutral-300 hover:shadow-md md:p-10"
+      >
+        <h2 className="text-2xl font-bold text-foreground md:text-3xl">
+          {isZh ? '点此进入 AP 化学先修课程' : 'Open the AP Chemistry Preparatory Course'}
+        </h2>
+        <p className="mt-4 text-base font-medium leading-8 text-foreground/85 md:text-lg">
+          {isZh
+            ? '点击后可直接进入 Moodle 的“高级化学先修课程”，查看课程目录、讲义、测试和相关资料。'
+            : 'Open the Moodle Advanced Chemistry Preparatory Course directly to access lessons, materials, quizzes, and course sections.'}
+        </p>
+        <p className="mt-4 text-sm text-foreground/65 md:text-base">{apCourseLink}</p>
+      </a>
     </Container>
   );
 }
