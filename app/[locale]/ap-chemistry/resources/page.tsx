@@ -5,15 +5,35 @@ import { getLocaleFromParams } from '@/lib/i18n';
 const apResources = [
   {
     title: 'AP Chemistry Course at a Glance 2026',
-    fileName: 'AP Chemistry Course at a Glance 2026.xlsx',
-    descriptionZh: 'AP 化学课程总览表，便于按单元查看全年进度与内容安排。',
-    descriptionEn: 'A course-at-a-glance spreadsheet for tracking AP Chemistry units and pacing.'
+    fileName: 'AP Chemistry Course at a Glance 2026.xlsx'
   },
   {
     title: 'AP Chemistry Notes',
-    fileName: 'AP chemistry notes-stephen akiki(1).pdf',
-    descriptionZh: 'AP 化学笔记资料，适合复习核心知识点与考前回顾。',
-    descriptionEn: 'A concise AP Chemistry notes PDF for reviewing key concepts.'
+    fileName: 'AP chemistry notes-stephen akiki(1).pdf'
+  },
+  {
+    title: 'AP 化学真题集 1',
+    fileName: 'AP化学真题集 (1).pdf'
+  },
+  {
+    title: 'AP 化学真题集 2',
+    fileName: 'AP化学真题集 (2).pdf'
+  },
+  {
+    title: 'AP 化学真题集 3',
+    fileName: 'AP化学真题集 (3).pdf'
+  },
+  {
+    title: 'AP 化学真题集 3 Answer',
+    fileName: 'AP化学真题集 (3)answer.pdf'
+  },
+  {
+    title: 'AP 化学真题集 5',
+    fileName: 'AP化学真题集 (5).pdf'
+  },
+  {
+    title: 'AP 化学真题集 6',
+    fileName: 'AP化学真题集 (6).pdf'
   }
 ];
 

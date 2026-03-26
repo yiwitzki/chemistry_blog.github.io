@@ -1,6 +1,8 @@
 import { Container } from '@/components/ui';
 import { getLocaleFromParams } from '@/lib/i18n';
 
+const organicCourseLink = 'https://m.shsbnu.net/course/view.php?id=477';
+
 export default function OrganicChemistryResourcesPage({ params }: { params: { locale: string } }) {
   const locale = getLocaleFromParams(params.locale);
   const isZh = locale === 'zh';
@@ -21,6 +23,23 @@ export default function OrganicChemistryResourcesPage({ params }: { params: { lo
             : 'Use this page for reaction lists, mechanism maps, topic handouts, and structure-deduction exercises.'}
         </p>
       </section>
+
+      <a
+        href={organicCourseLink}
+        target="_blank"
+        rel="noreferrer"
+        className="block rounded-2xl border border-border bg-card p-6 no-underline shadow-soft transition hover:border-neutral-300 hover:shadow-md"
+      >
+        <h2 className="text-xl font-semibold text-foreground">
+          {isZh ? '有机化学课程与资料入口' : 'Organic Chemistry Course and Materials'}
+        </h2>
+        <p className="mt-3 text-sm leading-7 text-foreground/75">
+          {isZh
+            ? '点开后即可获得资料和课程。'
+            : 'Open this link to access the course and study materials.'}
+        </p>
+        <p className="mt-2 text-xs text-foreground/60">{organicCourseLink}</p>
+      </a>
     </Container>
   );
 }
