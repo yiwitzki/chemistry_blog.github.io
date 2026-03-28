@@ -1,10 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Beaker, BookOpen, Home, Leaf } from 'lucide-react';
-import { Badge, Card, Container } from '@/components/ui';
+import { Badge, Container } from '@/components/ui';
 import { HomeQuickNav } from '@/components/home-quick-nav';
 import { categories } from '@/data/categories';
-import { siteConfig } from '@/data/site';
 import { getPublicationIndex, type PublicationMeta } from '@/lib/content';
 import { dictionary, getLocaleFromParams } from '@/lib/i18n';
 import { assetPath } from '@/lib/asset';
@@ -59,24 +58,6 @@ export default function HomePage({ params }: { params: { locale: string } }) {
       </section>
 
       <HomeQuickNav locale={locale} />
-
-      <section>
-        <h2 className="mb-4 text-2xl font-semibold">{t.highlights}</h2>
-        <div className="grid gap-4 md:grid-cols-3">
-          <Card>
-            <p className="text-sm text-foreground/70">{t.totalArticles}</p>
-            <p className="text-3xl font-bold">{publications.length}</p>
-          </Card>
-          <Card>
-            <p className="text-sm text-foreground/70">{t.activities}</p>
-            <p className="text-3xl font-bold">{siteConfig.stats.activities}</p>
-          </Card>
-          <Card>
-            <p className="text-sm text-foreground/70">{t.reach}</p>
-            <p className="text-3xl font-bold">{siteConfig.stats.reach}</p>
-          </Card>
-        </div>
-      </section>
 
       <section>
         <h2 className="mb-4 text-2xl font-semibold">{t.fourPillars}</h2>
