@@ -3,6 +3,7 @@ import { Container } from '@/components/ui';
 import { getLocaleFromParams } from '@/lib/i18n';
 
 const apCourseLink = 'https://m.shsbnu.net/course/view.php?id=481';
+const apPastPaperVideoLink = 'https://space.bilibili.com/346055941';
 
 export default function ApChemistryPage({ params }: { params: { locale: string } }) {
   const locale = getLocaleFromParams(params.locale);
@@ -56,6 +57,23 @@ export default function ApChemistryPage({ params }: { params: { locale: string }
             : 'Open the Moodle Advanced Chemistry Preparatory Course directly to access lessons, materials, quizzes, and course sections.'}
         </p>
         <p className="mt-4 text-sm text-foreground/65 md:text-base">{apCourseLink}</p>
+      </a>
+
+      <a
+        href={apPastPaperVideoLink}
+        target="_blank"
+        rel="noreferrer"
+        className="block rounded-3xl border border-border bg-card p-8 no-underline shadow-soft transition hover:border-neutral-300 hover:shadow-md md:p-10"
+      >
+        <h2 className="text-2xl font-bold text-foreground md:text-3xl">
+          {isZh ? '历年真题讲解' : 'Past Paper Walkthroughs'}
+        </h2>
+        <p className="mt-4 text-base font-medium leading-8 text-foreground/85 md:text-lg">
+          {isZh
+            ? '点开后进入这个网页即可学习 AP 化学历年真题讲解视频。'
+            : 'Open this page to study AP Chemistry past-paper walkthrough videos.'}
+        </p>
+        <p className="mt-4 text-sm text-foreground/65 md:text-base">{apPastPaperVideoLink}</p>
       </a>
     </Container>
   );
