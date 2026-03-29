@@ -15,31 +15,31 @@ export function Navbar({ locale }: { locale: Locale }) {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/80 bg-background/85 backdrop-blur-xl">
-      <Container className="flex h-16 items-center justify-between gap-4">
-        <Link href={`/${locale}`} className="flex min-w-0 items-center gap-3 font-semibold text-foreground no-underline">
-          <span className="relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-full border border-border/60 bg-white/90 shadow-sm">
+      <Container className="flex h-16 items-center justify-between gap-2 px-3 md:px-4">
+        <Link href={`/${locale}`} className="flex min-w-0 items-center gap-2 font-semibold text-foreground no-underline">
+          <span className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-border/60 bg-white/90 shadow-sm">
             <Image
               src="/images/school-badge.png"
               alt="The Second High School Attached to BNU badge"
               fill
-              sizes="56px"
+              sizes="48px"
               className="object-contain p-0.5"
               priority
             />
           </span>
-          <span className="truncate">{siteConfig.name[locale]}</span>
+          <span className="hidden truncate lg:inline">{siteConfig.name[locale]}</span>
         </Link>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-2 md:flex">
           <nav
-            className="items-center gap-2 rounded-full border border-white/50 bg-white/45 px-3 py-2 shadow-[0_10px_30px_rgba(104,150,98,0.08)] md:flex"
+            className="items-center gap-1 rounded-full border border-white/50 bg-white/45 px-2 py-1.5 shadow-[0_10px_30px_rgba(104,150,98,0.08)] md:flex"
             aria-label="Main navigation"
           >
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={`/${locale}${item.href}`}
-                className="rounded-full px-3 py-1.5 text-sm no-underline transition hover:bg-white/80 hover:text-accent"
+                className="whitespace-nowrap rounded-full px-2.5 py-1 text-[13px] font-semibold no-underline transition hover:bg-white/80 hover:text-accent"
               >
                 {item.label}
               </Link>

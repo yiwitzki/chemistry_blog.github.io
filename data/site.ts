@@ -34,7 +34,7 @@ export const siteConfig = {
     en: [
       { href: '/about', label: 'About' },
       { href: '/team', label: 'Team' },
-      { href: '/publications', label: 'Club Highlights' },
+      { href: '/publications', label: 'Original Articles' },
       { href: '/curriculum', label: 'School Chemistry' },
       { href: '/competition', label: 'Competition' },
       { href: '/ap-chemistry', label: 'AP Chemistry' },
@@ -44,7 +44,7 @@ export const siteConfig = {
     zh: [
       { href: '/about', label: '关于' },
       { href: '/team', label: '团队' },
-      { href: '/publications', label: '社团成果' },
+      { href: '/publications', label: '社团原创文章' },
       { href: '/curriculum', label: '校内国家课程' },
       { href: '/competition', label: '化学竞赛（CCC/UKChO）' },
       { href: '/ap-chemistry', label: 'AP化学' },
