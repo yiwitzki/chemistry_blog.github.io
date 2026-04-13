@@ -3,6 +3,27 @@ import { getLocaleFromParams } from '@/lib/i18n';
 
 const partNamesZh = ['第一部分', '第二部分', '第三部分', '第四部分'] as const;
 
+const courseDecks = [
+  {
+    key: 'section5-energy-enthalpy-change',
+    zhTitle: '录课 1：Section 5 Energy - Enthalpy Change',
+    enTitle: 'Lesson 1: Section 5 Energy - Enthalpy Change',
+    zhNote: '点击即可打开或下载课件。若需播放课件内嵌音频，请使用 PowerPoint 或 WPS 打开。',
+    enNote:
+      'Click to open or download the slide deck. To hear embedded slide audio, open it in PowerPoint or WPS.',
+    href: '/downloads/curriculum/lesson-1-section5-energy-enthalpy-change.pptx'
+  },
+  {
+    key: 'section5-dynamics-reaction-rates',
+    zhTitle: '录课 2：Section 5 Dynamics - Reaction Rates',
+    enTitle: 'Lesson 2: Section 5 Dynamics - Reaction Rates',
+    zhNote: '点击即可打开或下载课件。若需播放课件内嵌音频，请使用 PowerPoint 或 WPS 打开。',
+    enNote:
+      'Click to open or download the slide deck. To hear embedded slide audio, open it in PowerPoint or WPS.',
+    href: '/downloads/curriculum/lesson-2-section5-dynamics-reaction-rates.pptx'
+  }
+] as const;
+
 const lessons = [
   {
     key: 'voltaic-cell',
@@ -62,6 +83,38 @@ export default function CurriculumPage({ params }: { params: { locale: string } 
             ? '这里整理校内国家课程的课堂回放与补充讲解，方便课后复习与实验回顾。'
             : 'This section collects school chemistry class replays and follow-up explanations for review after class.'}
         </p>
+      </section>
+
+      <section className="rounded-3xl border border-border/80 bg-white/90 p-6 shadow-[0_16px_40px_rgba(31,41,55,0.08)]">
+        <div className="flex flex-col gap-2">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/45">
+            {isZh ? '国家课程录课课件' : 'Curriculum Slide Decks'}
+          </p>
+          <h2 className="text-2xl font-semibold text-foreground">{isZh ? '国家课程录课栏' : 'National Curriculum Lesson Decks'}</h2>
+          <p className="text-sm leading-7 text-foreground/70">
+            {isZh
+              ? '这里可以直接打开录课对应的 PPT 课件。网页会直接提供文件，若课件里包含声音，请用 PowerPoint 或 WPS 播放以保证音频正常。'
+              : 'Open the PPT slide decks for the recorded lessons here. The website serves the files directly, but embedded audio is best played in PowerPoint or WPS.'}
+          </p>
+        </div>
+
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {courseDecks.map((deck) => (
+            <a
+              key={deck.key}
+              href={deck.href}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-2xl border border-border/80 bg-neutral-50/70 p-5 shadow-[0_8px_24px_rgba(15,23,42,0.05)] transition hover:-translate-y-0.5 hover:bg-white"
+            >
+              <p className="text-sm font-semibold text-foreground">{isZh ? deck.zhTitle : deck.enTitle}</p>
+              <p className="mt-2 text-sm leading-6 text-foreground/70">{isZh ? deck.zhNote : deck.enNote}</p>
+              <p className="mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-foreground/45">
+                {isZh ? '点击打开 PPTX' : 'Open PPTX'}
+              </p>
+            </a>
+          ))}
+        </div>
       </section>
 
       {lessons.map((lesson) => (
