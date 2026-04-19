@@ -20,6 +20,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
   const t = dictionary[locale];
   const publications = getPublicationIndex(locale);
   const latest = publications.slice(0, 6);
+  const heroBackground = assetPath('/images/uploads/wechat/wechat-20250619-257f60c7/cover-cuso4-rose.jpg');
 
   const featured = categories
     .map((category) => publications.find((item) => item.category === category.slug))
@@ -28,18 +29,36 @@ export default function HomePage({ params }: { params: { locale: string } }) {
 
   return (
     <Container className="space-y-12 py-12">
-      <section className="rounded-3xl border border-neutral-200/80 bg-gradient-to-br from-white to-[rgba(238,247,234,0.92)] p-8 shadow-[0_10px_28px_rgba(87,128,81,0.05)]">
-        <div className="grid items-start gap-8 md:grid-cols-[1.2fr_0.8fr]">
+      <section className="relative overflow-hidden rounded-3xl border border-sky-100/70 bg-slate-950 p-8 shadow-[0_18px_40px_rgba(15,23,42,0.18)]">
+        <Image
+          src={heroBackground}
+          alt={locale === 'zh' ? '硫酸铜玫瑰背景图' : 'Copper sulfate rose background'}
+          fill
+          priority
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(110deg,rgba(2,6,23,0.66)_10%,rgba(8,47,73,0.42)_42%,rgba(15,23,42,0.56)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_left_center,rgba(255,255,255,0.08),transparent_30%)]" />
+
+        <div className="relative z-10 grid items-start gap-8 md:grid-cols-[1.2fr_0.8fr]">
           <div className="flex h-full flex-col items-start">
-            <Badge className="border-[rgba(118,176,96,0.22)] bg-[rgba(241,249,236,0.9)] text-[rgba(59,106,60,0.95)]">Fun Chemistry</Badge>
-            <h1 className="mt-8 max-w-3xl text-2xl font-bold leading-relaxed tracking-tight text-foreground md:mt-10 md:text-4xl">
+            <Badge className="border-white/70 bg-white/90 text-slate-900 shadow-[0_8px_20px_rgba(15,23,42,0.18)] backdrop-blur-sm">
+              Fun Chemistry
+            </Badge>
+            <h1 className="mt-8 max-w-3xl text-2xl font-bold leading-relaxed tracking-tight text-white drop-shadow-[0_8px_24px_rgba(15,23,42,0.45)] md:mt-10 md:text-4xl">
               {t.mission}
             </h1>
             <div className="mt-auto flex flex-wrap gap-3 pt-6">
-              <Link href={`/${locale}/publications`} className="rounded-xl border border-primary bg-primary px-4 py-2 text-sm text-white no-underline">
+              <Link
+                href={`/${locale}/publications`}
+                className="rounded-xl border border-sky-300/70 bg-sky-500/92 px-4 py-2 text-sm font-medium text-white no-underline shadow-[0_12px_24px_rgba(14,116,144,0.28)] backdrop-blur-sm transition hover:bg-sky-400"
+              >
                 {t.ctaPublications}
               </Link>
-              <Link href={`/${locale}/team`} className="rounded-xl border border-border px-4 py-2 text-sm no-underline">
+              <Link
+                href={`/${locale}/team`}
+                className="rounded-xl border border-white/40 bg-white/10 px-4 py-2 text-sm font-medium text-white no-underline backdrop-blur-sm transition hover:bg-white/18"
+              >
                 {t.ctaTeam}
               </Link>
             </div>
@@ -50,8 +69,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
               alt={locale === 'zh' ? 'Chem Club logo' : 'Chem Club logo'}
               width={680}
               height={680}
-              className="h-auto w-full rounded-2xl border border-border bg-black/5 object-cover shadow-soft"
-              priority
+              className="h-auto w-full rounded-2xl border border-white/25 bg-black/25 object-cover shadow-[0_20px_45px_rgba(2,6,23,0.4)] backdrop-blur-sm"
             />
           </div>
         </div>
