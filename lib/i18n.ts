@@ -14,7 +14,7 @@ export function withLocale(locale: Locale, path = '') {
 
 export const dictionary = {
   en: {
-    mission: 'We turn high school chemistry curiosity into safe, rigorous, and shareable science outcomes.',
+    mission: 'We bring chemistry knowledge into fun experiments and everyday life, and present it to everyone in vivid language~',
     ctaPublications: 'View Publications',
     ctaTeam: 'Meet the Team',
     highlights: 'Highlights',
