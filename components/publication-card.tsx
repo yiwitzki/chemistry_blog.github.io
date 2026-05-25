@@ -20,6 +20,15 @@ export function PublicationCard({ publication }: { publication: PublicationMeta 
           height={675}
           className="aspect-video rounded-xl object-cover"
         />
+      ) : publication.coverVideo ? (
+        <video
+          src={assetPath(publication.coverVideo)}
+          preload="metadata"
+          muted
+          playsInline
+          className="aspect-video w-full rounded-xl border border-border bg-black object-cover"
+          aria-label={publication.title}
+        />
       ) : null}
 
       <div className="flex items-center gap-2 text-xs text-foreground/70">

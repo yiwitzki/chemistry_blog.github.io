@@ -69,5 +69,9 @@ export const publicationTranslations = {
   'wechat-20260219-0f06c9b0': {
     title: 'Green Chemistry: Acid Rain Series, Part I',
     summary: 'Part I of our green chemistry series on acid rain.'
+  },
+  'green-chemistry-video-20260525': {
+    title: 'Homemade Eco-Friendly Rosin',
+    summary: 'Homemade eco-friendly rosin.'
   }
 } as const;

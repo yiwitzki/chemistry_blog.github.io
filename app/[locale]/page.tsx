@@ -128,10 +128,21 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             <li key={item.slug}>
               <Link
                 href={`/${locale}/publications/${item.slug}`}
-                className="block rounded-xl border border-border bg-card px-4 py-3 no-underline shadow-soft hover:border-accent"
+                className="grid gap-4 rounded-xl border border-border bg-card p-3 no-underline shadow-soft hover:border-accent sm:grid-cols-[180px_1fr] sm:items-center"
               >
-                <p className="font-medium">{item.title}</p>
-                <p className="text-sm text-foreground/75">{item.summary}</p>
+                {item.cover ? (
+                  <Image
+                    src={assetPath(item.cover)}
+                    alt={item.title}
+                    width={360}
+                    height={202}
+                    className="aspect-video w-full rounded-lg object-cover"
+                  />
+                ) : null}
+                <div>
+                  <p className="font-medium">{item.title}</p>
+                  <p className="text-sm text-foreground/75">{item.summary}</p>
+                </div>
               </Link>
             </li>
           ))}

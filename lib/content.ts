@@ -20,6 +20,7 @@ const publicationSchema = z.object({
   categoryLabelZh: z.string().optional(),
   tags: z.array(z.string()).default([]),
   cover: z.string().optional(),
+  coverVideo: z.string().optional(),
   authors: z.array(z.string()).default([]),
   contributors: z.array(z.string()).default([]),
   contributorNotes: z.array(z.string()).default([]),
